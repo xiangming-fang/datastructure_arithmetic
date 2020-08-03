@@ -32,12 +32,12 @@ public class LinkedList {
     public void add(Integer value){
         Node node = new Node(value,null);
         Node p = this.node;
+        if (p == null){
+            this.node = node;
+            size ++;
+            return;
+        }
         while (true){
-            if (p == null){
-                this.node = node;
-                size ++;
-                break;
-            }
             if (p.next == null){
                 p.next = node;
                 size ++;
@@ -51,25 +51,25 @@ public class LinkedList {
     public void addBySort(Integer value){
         Node node = new Node(value,null);
         Node p = this.node;
+        if (p == null){
+            this.node = node;
+            size ++;
+            return;
+        }
+        if (p.value > node.value){
+            node.next = p;
+            this.node = node;
+            size ++;
+            return;
+        }
+        if (p.value.equals(node.value)){
+            System.out.println("要插入的节点值已存在链表中");
+            return;
+        }
         while (true){
-            if (p == null){
-                this.node = node;
-                size ++;
-                break;
-            }
             if (p.next == null){
                 p.next = node;
                 size ++;
-                break;
-            }
-            if (p.value > node.value){
-                node.next = p;
-                this.node = node;
-                size ++;
-                break;
-            }
-            if (p.value.equals(node.value)){
-                System.out.println("要插入的节点值已存在链表中");
                 break;
             }
             if (p.next.value > node.value){
@@ -112,7 +112,7 @@ public class LinkedList {
     // 按节点值删除指定节点
     public void deleteByValue(Integer value){
         Node p = this.node;
-        if (p.next == null){
+        if (p == null){
             return;
         }
         if (p.value.equals(value)){
