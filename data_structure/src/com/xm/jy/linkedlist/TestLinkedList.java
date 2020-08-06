@@ -7,82 +7,91 @@ package com.xm.jy.linkedlist;
  */
 public class TestLinkedList {
     public static void main(String[] args) {
-            LinkedList linkedList = new LinkedList();
-            linkedList.show();
-            // 插入尾部
-//        linkedList.add(3);
-//        System.out.println(linkedList.size());
-//        linkedList.add(5);
-//        System.out.println(linkedList.size());
-//        linkedList.add(7);
-//        System.out.println(linkedList.size());
-//        linkedList.add(2);
-//        System.out.println(linkedList.size());
-//        linkedList.add(9);
-//        System.out.println(linkedList.size());
-//        linkedList.add(9);
-//        System.out.println(linkedList.size());
-//        linkedList.show();
-            // 按节点值大小插入
-//            linkedList.addBySort(3);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(5);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(7);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(3);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(2);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(9);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(10);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(1);
-//            System.out.println(linkedList.size());
-//            linkedList.addBySort(11);
-//            System.out.println(linkedList.size());
-//            linkedList.show();
-            // 删除尾部节点
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-//        linkedList.delete();
-//        linkedList.show();
-//        System.out.println(linkedList.size());
-            // 按照节点值删除
-            linkedList.deleteByValue(1);
-            linkedList.show();
-            System.out.println(linkedList.size());
-            linkedList.deleteByValue(3);
-            linkedList.show();
-            System.out.println(linkedList.size());
-            linkedList.deleteByValue(9);
-            linkedList.show();
-            System.out.println(linkedList.size());
-            // 修改尾部节点值
-//        linkedList.update(10);
-//        linkedList.show();
-//        linkedList.update(1);
-//        linkedList.show();
-//        System.out.println(linkedList.size());
+            SingleLinkedList singleLinkedList = new SingleLinkedList();
+//             插入尾部
+/*        singleLinkedList.add(3);
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.add(5);
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.add(7);
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.add(2);
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.add(9);
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.add(9);
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.show();*/
+//             按节点值大小插入
+            singleLinkedList.addBySort(3);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(5);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(7);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(3);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(2);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(9);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(10);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(1);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.addBySort(11);
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.show();
+//             删除尾部节点
+/*        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());
+        singleLinkedList.delete();
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());*/
+//             按照节点值删除
+/*            singleLinkedList.deleteByValue(1);
+            singleLinkedList.show();
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.deleteByValue(3);
+            singleLinkedList.show();
+            System.out.println(singleLinkedList.size());
+            singleLinkedList.deleteByValue(9);
+            singleLinkedList.show();
+            System.out.println(singleLinkedList.size());*/
+//             修改尾部节点值
+/*        singleLinkedList.update(10);
+        singleLinkedList.show();
+        singleLinkedList.update(1);
+        singleLinkedList.show();
+        System.out.println(singleLinkedList.size());*/
+
+            // 翻转单链表
+/*            singleLinkedList.reserve();
+            singleLinkedList.show();*/
+
+            // 返回单链表倒数第k个节点
+//        System.out.println(singleLinkedList.getLastIndexK(3).toString());
+
+            // 逆序打印单链表
+//            singleLinkedList.reverseOrderPrint();
     }
 }

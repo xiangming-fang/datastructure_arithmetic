@@ -1,21 +1,31 @@
 package com.xm.jy.linkedlist;
 
+import java.util.Stack;
+
 /**
  * @author: albert.fang
  * @date: 2020/8/3 10:01
  * @description: 单链表的实现
  */
-public class LinkedList {
+public class SingleLinkedList {
     
     private Node node;
     
     private Integer size = 0;
 
-    public LinkedList(){
+    @Override
+    public String toString() {
+        return "SingleLinkedList{" +
+                "node=" + node +
+                ", size=" + size +
+                '}';
+    }
+
+    public SingleLinkedList(){
 
     }
     
-    private static class Node{
+    static class Node{
         private Integer value;
         private Node next;
         public Node(Integer value,Node next){
@@ -24,6 +34,14 @@ public class LinkedList {
         }
         public Node(){
 
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "value=" + value +
+                    ", next=" + next +
+                    '}';
         }
     }
     // 下面实现链表的增删改查
@@ -169,5 +187,78 @@ public class LinkedList {
     // 得到链表长度
     public int size(){
         return size;
+    }
+
+    // 翻转单链表
+    public void reserve(){
+        if (this.node == null){
+            System.out.println("链表为空");
+            return;
+        }
+        // 创建一个辅助变量
+        Node helper = new Node();
+
+        // 遍历this.node
+        Node p = this.node;
+        while (true){
+            Node next = p.next;
+            p.next = helper.next;
+            helper.next = p;
+            p = next;
+            if (p == null){
+                break;
+            }
+        }
+        this.node = helper.next;
+    }
+
+    // 返回单链表倒数第k个节点
+    public Node getLastIndexK(int k){
+        if (this.node == null){
+            throw new RuntimeException("链表为空");
+        }
+        if (k <= 0 || k > size){
+            throw new RuntimeException("输入的k值有误");
+        }
+        Stack<Node> stack = new Stack<>();
+        Node p = this.node;
+        while (true){
+            Node next = p.next;
+            // 为了只返回一个节点，清空next指向
+            p.next = null;
+            stack.push(p);
+            p = next;
+            if (p == null){
+                break;
+            }
+        }
+        for (int i = 0; i < k - 1; i++) {
+            stack.pop();
+        }
+        return stack.pop();
+    }
+
+    // 逆序打印单链表
+    public void reverseOrderPrint(){
+        if (this.node == null){
+            System.out.println("链表为空");
+            return;
+        }
+        Stack<Integer> stack = new Stack<>();
+        Node p = this.node;
+        while (true){
+            Node next = p.next;
+            stack.push(p.value);
+            p = next;
+            if (p == null){
+                break;
+            }
+        }
+        String result = "";
+        int length = stack.size();
+        for (int i = 0; i < length; i++) {
+            result += stack.pop() + "->";
+        }
+        System.out.println(result.substring(0, result.length() - 2));
     }
 }
