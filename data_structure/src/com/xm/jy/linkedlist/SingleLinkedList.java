@@ -24,6 +24,10 @@ public class SingleLinkedList {
     public SingleLinkedList(){
 
     }
+
+    public SingleLinkedList(Node node){
+        this.node = node;
+    }
     
     static class Node{
         private Integer value;
@@ -260,5 +264,44 @@ public class SingleLinkedList {
             result += stack.pop() + "->";
         }
         System.out.println(result.substring(0, result.length() - 2));
+    }
+
+    // 合并两个有序的单链表，合并之后的单链表，仍然是有序的
+    public static SingleLinkedList mergeTwoSingleLinkedList(SingleLinkedList list1,SingleLinkedList list2){
+        Node p = list1.node;
+        Node q = list2.node;
+        Node head = new Node();
+        Node temp = head;
+        Node nextP;
+        Node nextQ;
+        while (true){
+            if (q == null && p == null){
+                break;
+            }
+            if (p.value < q.value){
+                nextP = p.next;
+                p.next = null;
+                temp.next = p;
+                p = nextP;
+                temp = temp.next;
+            }
+            if (p == null){
+                temp.next = q;
+                break;
+            }
+            if (p.value >= q.value){
+                nextQ = q.next;
+                q.next = null;
+                temp.next = q;
+                q = nextQ;
+                temp = temp.next;
+            }
+            if (q == null){
+                temp.next = p;
+                break;
+            }
+        }
+        SingleLinkedList result = new SingleLinkedList(head.next);
+        return result;
     }
 }

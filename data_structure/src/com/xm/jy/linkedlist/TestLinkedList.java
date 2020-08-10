@@ -8,20 +8,21 @@ package com.xm.jy.linkedlist;
 public class TestLinkedList {
     public static void main(String[] args) {
             SingleLinkedList singleLinkedList = new SingleLinkedList();
+            SingleLinkedList singleLinkedList2 = new SingleLinkedList();
 //             插入尾部
-/*        singleLinkedList.add(3);
-        System.out.println(singleLinkedList.size());
-        singleLinkedList.add(5);
-        System.out.println(singleLinkedList.size());
-        singleLinkedList.add(7);
-        System.out.println(singleLinkedList.size());
-        singleLinkedList.add(2);
-        System.out.println(singleLinkedList.size());
-        singleLinkedList.add(9);
-        System.out.println(singleLinkedList.size());
-        singleLinkedList.add(9);
-        System.out.println(singleLinkedList.size());
-        singleLinkedList.show();*/
+            singleLinkedList2.add(3);
+        System.out.println(singleLinkedList2.size());
+            singleLinkedList2.add(5);
+        System.out.println(singleLinkedList2.size());
+            singleLinkedList2.add(7);
+        System.out.println(singleLinkedList2.size());
+            singleLinkedList2.add(9);
+        System.out.println(singleLinkedList2.size());
+            singleLinkedList2.add(11);
+        System.out.println(singleLinkedList2.size());
+            singleLinkedList2.add(13);
+        System.out.println(singleLinkedList2.size());
+            singleLinkedList2.show();
 //             按节点值大小插入
             singleLinkedList.addBySort(3);
             System.out.println(singleLinkedList.size());
@@ -93,5 +94,8 @@ public class TestLinkedList {
 
             // 逆序打印单链表
 //            singleLinkedList.reverseOrderPrint();
+
+            // 合并两个有序单链表
+            SingleLinkedList.mergeTwoSingleLinkedList(singleLinkedList,singleLinkedList2).show();
     }
 }
