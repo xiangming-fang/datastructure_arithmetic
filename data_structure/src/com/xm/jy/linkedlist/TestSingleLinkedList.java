@@ -5,7 +5,7 @@ package com.xm.jy.linkedlist;
  * @date: 2020/8/3 11:18
  * @description: 测试单链表
  */
-public class TestLinkedList {
+public class TestSingleLinkedList {
     public static void main(String[] args) {
             SingleLinkedList singleLinkedList = new SingleLinkedList();
             SingleLinkedList singleLinkedList2 = new SingleLinkedList();
