@@ -92,12 +92,15 @@ public class StackByLinkedList {
         Node node4 = new Node(4,4);
         Node node5 = new Node(5,5);
         Node node6 = new Node(6,6);
+        Node node7 = new Node(7,7);
         stackByLinkedList.push(node1);
+        stackByLinkedList.pop();
         stackByLinkedList.push(node2);
         stackByLinkedList.push(node3);
         stackByLinkedList.push(node4);
         stackByLinkedList.push(node5);
         stackByLinkedList.push(node6);
+        stackByLinkedList.push(node7);
         // 遍历
         stackByLinkedList.show();
         // 出栈
