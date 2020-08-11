@@ -63,16 +63,25 @@ public class StackByLinkedList {
             return;
         }
         Node temp = head;
-        while (true){
-            if (temp.next.next == null){
-                Node popNode = temp.next;
-                temp.next = null;
-                System.out.println("节点编号"+popNode.no + " 节点值" + popNode.value);
-                break;
-            }
+        // 得到栈的长度
+        int count = 0;
+        while (temp.next != null) {
+            count++;
             temp = temp.next;
         }
-        show();
+        // 双层遍历栈，第一层是几个节点，遍历几次，从最后一个开始遍历
+        for (int i = count; i > 0; i--) {
+            Node top = head;
+            // 第二层是，要获取第几个节点，就遍历几次
+            for (int j = 1; j <= i; j++) {
+                top = top.next;
+                if (j == i){
+                    System.out.println("节点编号"+top.no + " 节点值" + top.value);
+                }
+            }
+        }
+
+
     }
 
     public static void main(String[] args) {
