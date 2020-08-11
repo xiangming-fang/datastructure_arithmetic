@@ -8,6 +8,7 @@ package com.xm.jy.linkedlist;
 public class Josephus {
     public static void main(String[] args) {
         CircleSingleLinkedList circleSingleLinkedList = new CircleSingleLinkedList();
+        circleSingleLinkedList.show();
         circleSingleLinkedList.addBoys(15);
         circleSingleLinkedList.show();
         circleSingleLinkedList.getBoys(2,45);
@@ -81,6 +82,10 @@ class CircleSingleLinkedList{
     // 打印现有的单向环形链表
     public void show(){
         Boy helper = first;
+        if (first == null){
+            System.out.println("环中没有节点");
+            return;
+        }
         while (helper.getNext() != first){
             System.out.println("编号：" + helper.getNo());
             helper = helper.getNext();
