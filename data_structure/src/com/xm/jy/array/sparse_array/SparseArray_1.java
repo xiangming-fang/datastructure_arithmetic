@@ -1,4 +1,4 @@
-package com.xm.jy.sparse_array;
+package com.xm.jy.array.sparse_array;
 
 import java.io.*;
 
@@ -48,7 +48,7 @@ public class SparseArray_1 implements Serializable {
         }
         // 将稀疏数组序列化到磁盘文件
         try {
-            OutputStream ops = new FileOutputStream("E:\\IdeaProjects\\datastructure_arithmetic\\data_structure\\src\\com\\xm\\jy\\sparse_array\\array.txt");
+            OutputStream ops = new FileOutputStream("E:\\IdeaProjects\\datastructure_arithmetic\\data_structure\\src\\com\\xm\\jy\\array\\sparse_array\\array.txt");
             ObjectOutputStream oos = new ObjectOutputStream(ops);
             oos.writeObject(sparseArray);
             oos.close();

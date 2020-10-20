@@ -1,4 +1,4 @@
-package com.xm.jy.sparse_array;
+package com.xm.jy.array.sparse_array;
 
 import java.io.*;
 
@@ -10,7 +10,7 @@ import java.io.*;
 public class SparseArray_2 implements Serializable{
     public static void main(String[] args) {
         try {
-            InputStream is = new FileInputStream("E:\\IdeaProjects\\datastructure_arithmetic\\data_structure\\src\\com\\xm\\jy\\sparse_array\\array.txt");
+            InputStream is = new FileInputStream("E:\\IdeaProjects\\datastructure_arithmetic\\data_structure\\src\\com\\xm\\jy\\array\\sparse_array\\array.txt");
             try {
                 ObjectInputStream ois = new ObjectInputStream(is);
                 int[][] readSparseArray = (int[][]) ois.readObject();

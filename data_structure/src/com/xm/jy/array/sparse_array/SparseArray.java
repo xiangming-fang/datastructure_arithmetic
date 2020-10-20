@@ -1,4 +1,4 @@
-package com.xm.jy.sparse_array;
+package com.xm.jy.array.sparse_array;
 
 /**
  * @author: albert.fang
