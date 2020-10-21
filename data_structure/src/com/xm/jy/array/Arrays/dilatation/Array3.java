@@ -129,7 +129,7 @@ public class Array3<E> {
         }
         size --;
         // 判断是否需要缩小容量
-        if (size <= data.length/2){
+        if (size <= data.length/4 && data.length/2 != 0){
             resize(data.length/2);
         }
         return result;
