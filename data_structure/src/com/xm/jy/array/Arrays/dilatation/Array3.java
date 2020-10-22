@@ -77,6 +77,11 @@ public class Array3<E> {
         return data[index];
     }
 
+    // 获取最后一个元素
+    public E getLast() throws Exception {
+        return get(size - 1);
+    }
+
     // 修改指定位置的元素
     public void set(int index ,E e) throws Exception {
         if (!indexIsLegal(index)) {
@@ -137,7 +142,7 @@ public class Array3<E> {
 
 
     // 判断数组存储的元素是否为空
-    private boolean isEmpty(){
+    public boolean isEmpty(){
         return size == 0;
     }
 
