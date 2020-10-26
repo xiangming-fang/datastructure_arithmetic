@@ -69,7 +69,10 @@ public class LinkedList<E> implements List<E> {
     }
 
     @Override
-    public void remove(int index) {
+    public E remove(int index) {
+        if (isEmpty()){
+            throw new IllegalArgumentException("failed，no value in");
+        }
         if (size < index || index < 0)
             throw new IllegalArgumentException("delete failed,index is illegal");
         Node prev = dummyHead;
@@ -80,14 +83,15 @@ public class LinkedList<E> implements List<E> {
         // 方便JVM回收
         delNode.next = null;
         size --;
+        return delNode.e;
     }
 
-    public void removeFirst(){
-        remove(0);
+    public E removeFirst(){
+        return remove(0);
     }
 
-    public void removeLast(){
-        remove(size - 1);
+    public E removeLast(){
+        return remove(size - 1);
     }
 
     @Override
@@ -123,7 +127,6 @@ public class LinkedList<E> implements List<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("LinkedList：");
         Node cur = dummyHead.next;
         while (cur != null){
             sb.append(cur.e.toString()).append(" -> ");
@@ -131,5 +134,47 @@ public class LinkedList<E> implements List<E> {
         }
         sb.append("NULL");
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        // 添加到末尾
+        for (int i = 0; i < 3; i++) {
+            linkedList.addLast(i);
+            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        }
+        // 添加到头部
+        for (int i = 3; i < 6; i++) {
+            linkedList.addFirst(i);
+            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        }
+        // 按index来添加
+        linkedList.add(2,2);
+        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+
+        // 修改链表值
+        for (int i = 0; i < linkedList.getSize(); i++) {
+            linkedList.set(i,i);
+            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        }
+
+        // 得到链表的值
+        System.out.println(linkedList.get(linkedList.getSize() - 1));
+
+        // 删除链表头结点
+        for (int i = 0; i < 3; i++) {
+            linkedList.removeFirst();
+            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        }
+
+        // 删除链表尾节点
+        for (int i = 0; i < 2; i++) {
+            linkedList.removeLast();
+            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        }
+
+        // 删除指定索引节点
+        linkedList.remove(1);
+        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
     }
 }

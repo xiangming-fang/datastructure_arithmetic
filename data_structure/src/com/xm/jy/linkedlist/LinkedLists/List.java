@@ -13,7 +13,7 @@ public interface List<E> {
     boolean contains(E e);
 
     // 移除指定索引的节点（不常用，但是经常用于练习使用）
-    void remove(int index);
+    E remove(int index);
 
     // 修改指定索引的节点（不常用，但是经常用于练习使用）
     void set(int index,E e);
