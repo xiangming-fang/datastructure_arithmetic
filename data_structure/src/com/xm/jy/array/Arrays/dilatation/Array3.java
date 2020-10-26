@@ -37,7 +37,7 @@ public class Array3<E> {
     // 在数组末尾增加
     public void addLast(E e) throws Exception {
         if (isFull()) {
-            throw new Exception("数组已满");
+            throw new Exception("空间已满");
         }
         add(size,e);
     }
@@ -45,7 +45,7 @@ public class Array3<E> {
     // 在数组头部增加
     public void addFirst(E e) throws Exception {
         if (isFull()) {
-            throw new Exception("数组已满");
+            throw new Exception("空间已满");
         }
         add(0,e);
     }
@@ -53,7 +53,7 @@ public class Array3<E> {
     // 在指定位置插入元素
     public void add(int index,E e) throws Exception {
         if (isFull()){
-            throw new Exception("数组已满");
+            throw new Exception("空间已满");
         }
         // 1、将要插入的位置到末尾，所有数据后移一位,注意移动的方式：从右向左
         for (int i = size; i > index; i--) {
@@ -123,7 +123,7 @@ public class Array3<E> {
     // 删除指定下标的元素 （往左移动），并返回删除的元素
     public E remove(int index) throws Exception {
         if (isEmpty()){
-            throw new Exception("数组为空，不可删除");
+            throw new Exception("空间为空，不可删除");
         }
         if (!indexIsLegal(index)) {
             throw new IllegalArgumentException("输入的下标不合法");
