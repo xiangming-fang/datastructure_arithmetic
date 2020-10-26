@@ -61,4 +61,18 @@ public class ArrayQueue<E> implements Queue<E> {
         sb.append("] tail");
         return sb.toString();
     }
+
+    public static void main(String[] args) throws Exception {
+        ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
+        System.out.println("入队操作：");
+        for (int i = 0; i < 6; i++) {
+            arrayQueue.enqueue(i);
+            System.out.println(arrayQueue.toString() + ",队列大小：" + arrayQueue.getSize());
+        }
+        System.out.println("出队操作：");
+        for (int i = 0; i < 5; i++) {
+            arrayQueue.dequeue();
+            System.out.println(arrayQueue.toString() + ",队列大小：" + arrayQueue.getSize());
+        }
+    }
 }

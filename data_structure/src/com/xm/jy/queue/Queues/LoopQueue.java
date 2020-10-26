@@ -97,4 +97,20 @@ public class LoopQueue<E> implements Queue<E> {
         front = 0;
         tail = size;
     }
+
+    public static void main(String[] args) throws Exception {
+        LoopQueue<Integer> loopQueue = new LoopQueue<>();
+        // 入队操作，直接入满
+        System.out.println("入队操作，入满");
+        for (int i = 0; i < 20; i++) {
+            loopQueue.enqueue(i);
+            System.out.println(loopQueue.toString()+" 当前队列大小" + loopQueue.getSize() + " 初始容量：" + loopQueue.getCapacity());
+        }
+
+        System.out.println("出队操作");
+        for (int i = 0; i < 20; i++) {
+            loopQueue.dequeue();
+            System.out.println(loopQueue.toString()+" 当前队列大小" + loopQueue.getSize() + " 初始容量：" + loopQueue.getCapacity());
+        }
+    }
 }
