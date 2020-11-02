@@ -1,5 +1,7 @@
 package com.xm.jy.bst;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -137,7 +139,7 @@ public class BST<E extends Comparable<E>> {
         System.out.println(node.e);
     }
 
-    // 借助栈这个数据结构，实现BST的非递归遍历
+    // 借助栈这种数据结构，实现BST的非递归前序遍历
     public void preorderNR(){
         if (root == null)
             return;
@@ -150,6 +152,22 @@ public class BST<E extends Comparable<E>> {
                 stack.push(cur.right);
             if (cur.left != null)
                 stack.push(cur.left);
+        }
+    }
+
+    // 借助Queue这种数据结构，实现BST的层次遍历
+    public void levelOrder(){
+        if (root == null)
+            return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            Node cur = queue.remove();
+            System.out.println(cur.e);
+            if (cur.left != null)
+                queue.add(cur.left);
+            if (cur.right != null)
+                queue.add(cur.right);
         }
     }
 
@@ -168,6 +186,8 @@ public class BST<E extends Comparable<E>> {
         testBST.inorder();
         System.out.println(" 后序遍历 ");
         testBST.postorder();
+        System.out.println(" 层次遍历 ");
+        testBST.levelOrder();
     }
 
 }
