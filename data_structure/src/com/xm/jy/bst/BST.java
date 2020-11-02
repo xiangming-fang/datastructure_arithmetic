@@ -1,5 +1,7 @@
 package com.xm.jy.bst;
 
+import java.util.Stack;
+
 /**
  * @author: albert.fang
  * @date: 2020/10/29 13:23
@@ -135,6 +137,22 @@ public class BST<E extends Comparable<E>> {
         System.out.println(node.e);
     }
 
+    // 借助栈这个数据结构，实现BST的非递归遍历
+    public void preorderNR(){
+        if (root == null)
+            return;
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+            if (cur.right != null)
+                stack.push(cur.right);
+            if (cur.left != null)
+                stack.push(cur.left);
+        }
+    }
+
 
     public static void main(String[] args) {
         BST<Integer> testBST = new BST<>();
@@ -144,6 +162,8 @@ public class BST<E extends Comparable<E>> {
         }
         System.out.println(" 前序遍历 ");
         testBST.preorder();
+        System.out.println(" 非递归的前序遍历 ");
+        testBST.preorderNR();
         System.out.println(" 中序遍历 ");
         testBST.inorder();
         System.out.println(" 后序遍历 ");
