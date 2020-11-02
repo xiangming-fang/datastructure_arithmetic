@@ -98,49 +98,49 @@ public class BST<E extends Comparable<E>> {
     // BST 的前中后三种遍历方式
 
     // 1、BST 的前序遍历
-    public void preorder(){
-        preorder(root);
+    public void preOrder(){
+        preOrder(root);
     }
 
-    private void preorder(Node node) {
+    private void preOrder(Node node) {
         if (node == null)
             return;
         // 打印当前根节点的值
         System.out.println(node.e);
         if (node.left != null)
-            preorder(node.left);
+            preOrder(node.left);
         if (node.right != null)
-            preorder(node.right);
+            preOrder(node.right);
     }
 
     // 2、BST 的中序遍历
-    public void inorder(){
-        inorder(root);
+    public void inOrder(){
+        inOrder(root);
     }
 
-    private void inorder(Node node) {
+    private void inOrder(Node node) {
         if (node == null)
             return;
-        inorder(node.left);
+        inOrder(node.left);
         System.out.println(node.e);
-        inorder(node.right);
+        inOrder(node.right);
     }
 
     // 3、BST 的后序遍历
-    public void postorder(){
-        postorder(root);
+    public void postOrder(){
+        postOrder(root);
     }
 
-    private void postorder(Node node) {
+    private void postOrder(Node node) {
         if (node == null)
             return;
-        postorder(node.right);
-        postorder(node.left);
+        postOrder(node.right);
+        postOrder(node.left);
         System.out.println(node.e);
     }
 
     // 借助栈这种数据结构，实现BST的非递归前序遍历
-    public void preorderNR(){
+    public void preOrderNR(){
         if (root == null)
             return;
         Stack<Node> stack = new Stack<>();
@@ -171,23 +171,98 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    // 找到BST中的最小值和最大值
+
+    // BST中最小值
+    public E getMin(){
+        if (size == 0)
+            throw new IllegalArgumentException("getMin failed,BST中没有节点");
+        return getMin(root).e;
+    }
+
+    private Node getMin(Node node) {
+        if (node.left == null)
+            return node;
+        return getMin(node.left);
+    }
+
+    // 去除一棵BST的最小值节点
+    // 返回去除最小值节点之后的一棵BST
+    public Node removeMin(){
+        return removeMin(root);
+    }
+
+    private Node removeMin(Node node) {
+        if (node.left == null){
+            Node right = node.right;
+            node.right = null;
+            size --;
+            return right;
+        }
+        // 这一行好好理解下，进来的一棵树，删除之后，衔接删除节点的右节点
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    // BST中最大值
+    public E getMax(){
+        if (size == 0)
+            throw new IllegalArgumentException("getMax failed,BST中没有节点");
+        return getMax(root).e;
+    }
+
+    private Node getMax(Node node) {
+        if (node.right == null)
+            return node;
+        return getMax(node.right);
+    }
+
+    // 去除一棵BST的最大值节点
+    // 返回去除最大值节点之后的一棵BST
+    public Node removeMax(){
+        return removeMax(root);
+    }
+
+    private Node removeMax(Node node) {
+        if (node.right == null){
+            Node left = node.left;
+            node.left = null;
+            size --;
+            return left;
+        }
+        // 这一行好好理解下，进来的一棵树，删除之后，衔接删除节点的左节点
+        node.right = removeMax(node.right);
+        return node;
+    }
+
 
     public static void main(String[] args) {
         BST<Integer> testBST = new BST<>();
-        int[] bstValue = {3,2,1,4};
+        int[] bstValue = {8,5,10,6,9};
         for (int i : bstValue) {
             testBST.add(i);
         }
         System.out.println(" 前序遍历 ");
-        testBST.preorder();
+        testBST.preOrder();
         System.out.println(" 非递归的前序遍历 ");
-        testBST.preorderNR();
+        testBST.preOrderNR();
         System.out.println(" 中序遍历 ");
-        testBST.inorder();
+        testBST.inOrder();
         System.out.println(" 后序遍历 ");
-        testBST.postorder();
+        testBST.postOrder();
         System.out.println(" 层次遍历 ");
         testBST.levelOrder();
+        System.out.println(" 得到BST中最大的值 ");
+        System.out.println(testBST.getMax());
+        System.out.println(" 得到BST中最小的值 ");
+        System.out.println(testBST.getMin());
+        System.out.println(" 去除一棵BST中最小值节点,返回去除之后的一棵BST ");
+        testBST.removeMin();
+        testBST.levelOrder();
+        System.out.println(" 去除一棵BST中最大值节点,返回去除之后的一棵BST ");
+        testBST.removeMax();
+        testBST.levelOrder();
+
     }
 
 }
