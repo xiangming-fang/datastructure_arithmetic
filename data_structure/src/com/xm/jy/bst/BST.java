@@ -91,4 +91,63 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    // BST 的前中后三种遍历方式
+
+    // 1、BST 的前序遍历
+    public void preorder(){
+        preorder(root);
+    }
+
+    private void preorder(Node node) {
+        if (node == null)
+            return;
+        // 打印当前根节点的值
+        System.out.println(node.e);
+        if (node.left != null)
+            preorder(node.left);
+        if (node.right != null)
+            preorder(node.right);
+    }
+
+    // 2、BST 的中序遍历
+    public void inorder(){
+        inorder(root);
+    }
+
+    private void inorder(Node node) {
+        if (node == null)
+            return;
+        inorder(node.left);
+        System.out.println(node.e);
+        inorder(node.right);
+    }
+
+    // 3、BST 的后序遍历
+    public void postorder(){
+        postorder(root);
+    }
+
+    private void postorder(Node node) {
+        if (node == null)
+            return;
+        postorder(node.right);
+        postorder(node.left);
+        System.out.println(node.e);
+    }
+
+
+    public static void main(String[] args) {
+        BST<Integer> testBST = new BST<>();
+        int[] bstValue = {3,2,1,4};
+        for (int i : bstValue) {
+            testBST.add(i);
+        }
+        System.out.println(" 前序遍历 ");
+        testBST.preorder();
+        System.out.println(" 中序遍历 ");
+        testBST.inorder();
+        System.out.println(" 后序遍历 ");
+        testBST.postorder();
+    }
+
 }
