@@ -235,10 +235,63 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
+    // 删除BST中指定值的节点，然后返回删除之后的一棵BST
+    public void removeElement(E e){
+        if (size == 0)
+            throw new IllegalArgumentException(" removeElement failed");
+        root = removeElement(root,e);
+    }
+
+    private Node removeElement(Node node, E e) {
+        if (node == null)
+            return null;
+        if (e.compareTo(node.e) < 0){
+            node.left = removeElement(node.left,e);
+            return node;
+        }
+        else if (e.compareTo(node.e) > 0){
+            node.right = removeElement(node.right,e);
+            return node;
+        }
+        else {
+            // 待删除节点的左子树为空
+            if (node.left == null){
+                Node right = node.right;
+                node.right = null;
+                size --;
+                return right;
+            }
+
+            // 待删除节点的右子树为空
+            if (node.right == null){
+                Node left = node.left;
+                node.left = null;
+                size --;
+                return left;
+            }
+
+            // 1、待删除节点的左右子树都不为空
+            // 2、用待删除节点的右子树中最小的节点来代替待删除节点
+            // 3、然后删除右子树中那个最小节点
+
+            // 这三行代码，好好领悟
+            // 为啥不能写成 Node newNode = removeMin(node); newNode = node.left;
+            // 注意这里为啥不要进行size -- ；因为在removeMin中已经对size进行了 -- 了
+            Node newNode = new Node(getMin(node.right).e);
+
+            newNode.right = removeMin(node.right);
+            newNode.left = node.left;
+
+            node.left = null;
+            node.right = null;
+            return newNode;
+        }
+    }
+
 
     public static void main(String[] args) {
         BST<Integer> testBST = new BST<>();
-        int[] bstValue = {8,5,10,6,9};
+        int[] bstValue = {8,5,10,6,9,11};
         for (int i : bstValue) {
             testBST.add(i);
         }
@@ -252,17 +305,19 @@ public class BST<E extends Comparable<E>> {
         testBST.postOrder();
         System.out.println(" 层次遍历 ");
         testBST.levelOrder();
-        System.out.println(" 得到BST中最大的值 ");
-        System.out.println(testBST.getMax());
-        System.out.println(" 得到BST中最小的值 ");
-        System.out.println(testBST.getMin());
-        System.out.println(" 去除一棵BST中最小值节点,返回去除之后的一棵BST ");
-        testBST.removeMin();
+//        System.out.println(" 得到BST中最大的值 ");
+//        System.out.println(testBST.getMax());
+//        System.out.println(" 得到BST中最小的值 ");
+//        System.out.println(testBST.getMin());
+//        System.out.println(" 去除一棵BST中最小值节点,返回去除之后的一棵BST ");
+//        testBST.removeMin();
+//        testBST.levelOrder();
+//        System.out.println(" 去除一棵BST中最大值节点,返回去除之后的一棵BST ");
+//        testBST.removeMax();
+//        testBST.levelOrder();
+        System.out.println(" 删除一棵BST中指定值的节点，返回去除之后的一棵BST ");
+        testBST.removeElement(8);
         testBST.levelOrder();
-        System.out.println(" 去除一棵BST中最大值节点,返回去除之后的一棵BST ");
-        testBST.removeMax();
-        testBST.levelOrder();
-
     }
 
 }
