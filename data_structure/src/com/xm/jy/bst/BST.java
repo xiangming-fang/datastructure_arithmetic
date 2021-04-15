@@ -7,7 +7,7 @@ import java.util.Stack;
 /**
  * @author: albert.fang
  * @date: 2020/10/29 13:23
- * @description: 二分搜索树的实现
+ * @description: 二分搜索树的实现 binary search tree
  */
 public class BST<E extends Comparable<E>> {
 
@@ -134,8 +134,8 @@ public class BST<E extends Comparable<E>> {
     private void postOrder(Node node) {
         if (node == null)
             return;
-        postOrder(node.right);
         postOrder(node.left);
+        postOrder(node.right);
         System.out.println(node.e);
     }
 
@@ -192,6 +192,7 @@ public class BST<E extends Comparable<E>> {
         return removeMin(root);
     }
 
+    // 待删除节点的右节点，取代该删除节点。
     private Node removeMin(Node node) {
         if (node.left == null){
             Node right = node.right;
@@ -223,6 +224,7 @@ public class BST<E extends Comparable<E>> {
         return removeMax(root);
     }
 
+    // 待删除节点的左节点取代待删除节点
     private Node removeMax(Node node) {
         if (node.right == null){
             Node left = node.left;
@@ -295,29 +297,8 @@ public class BST<E extends Comparable<E>> {
         for (int i : bstValue) {
             testBST.add(i);
         }
-        System.out.println(" 前序遍历 ");
-        testBST.preOrder();
-        System.out.println(" 非递归的前序遍历 ");
-        testBST.preOrderNR();
         System.out.println(" 中序遍历 ");
         testBST.inOrder();
-        System.out.println(" 后序遍历 ");
-        testBST.postOrder();
-        System.out.println(" 层次遍历 ");
-        testBST.levelOrder();
-//        System.out.println(" 得到BST中最大的值 ");
-//        System.out.println(testBST.getMax());
-//        System.out.println(" 得到BST中最小的值 ");
-//        System.out.println(testBST.getMin());
-//        System.out.println(" 去除一棵BST中最小值节点,返回去除之后的一棵BST ");
-//        testBST.removeMin();
-//        testBST.levelOrder();
-//        System.out.println(" 去除一棵BST中最大值节点,返回去除之后的一棵BST ");
-//        testBST.removeMax();
-//        testBST.levelOrder();
-        System.out.println(" 删除一棵BST中指定值的节点，返回去除之后的一棵BST ");
-        testBST.removeElement(8);
-        testBST.levelOrder();
     }
 
 }
