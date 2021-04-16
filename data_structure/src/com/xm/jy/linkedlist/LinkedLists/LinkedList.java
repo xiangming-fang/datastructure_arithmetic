@@ -1,11 +1,13 @@
 package com.xm.jy.linkedlist.LinkedLists;
 
+import java.util.Random;
+
 /**
  * @author: albert.fang
  * @date: 2020/10/26 10:05
  * @description: 实现链表
  */
-public class LinkedList<E> implements List<E> {
+public class LinkedList<E extends Comparable<E>> implements List<E> {
 
 
     // 虚拟头结点，不存储元素值，只是用来使添加和删除的逻辑一致
@@ -47,6 +49,27 @@ public class LinkedList<E> implements List<E> {
             prev = prev.next;
         prev.next = new Node(e,prev.next);
         size ++;
+    }
+
+    public void add(E e){
+        dummyHead.next = add(dummyHead.next,e);
+    }
+
+    public Node add(Node node,E e) {
+        // 终止条件
+        if (node == null) {
+            return new Node(e);
+        }
+        else if (e.compareTo(node.e) < 0){
+            Node newNode = new Node(e);
+            newNode.next = node;
+            return newNode;
+        }
+        // 更小的问题
+        else if (e.compareTo(node.e) > 0){
+            node.next = add(node.next,e);
+        }
+        return node;
     }
 
     public void addFirst(E e){
@@ -139,42 +162,49 @@ public class LinkedList<E> implements List<E> {
     public static void main(String[] args) {
         LinkedList<Integer> linkedList = new LinkedList<>();
         // 添加到末尾
-        for (int i = 0; i < 3; i++) {
-            linkedList.addLast(i);
-            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
-        }
-        // 添加到头部
-        for (int i = 3; i < 6; i++) {
-            linkedList.addFirst(i);
-            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
-        }
-        // 按index来添加
-        linkedList.add(2,2);
-        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+//        for (int i = 0; i < 3; i++) {
+//            linkedList.addLast(i);
+//            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+//        }
+//        // 添加到头部
+//        for (int i = 3; i < 6; i++) {
+//            linkedList.addFirst(i);
+//            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+//        }
+//        // 按index来添加
+//        linkedList.add(2,2);
+//        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+//
+//        // 修改链表值
+//        for (int i = 0; i < linkedList.getSize(); i++) {
+//            linkedList.set(i,i);
+//            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+//        }
+//
+//        // 得到链表的值
+//        System.out.println(linkedList.get(linkedList.getSize() - 1));
+//
+//        // 删除链表头结点
+//        for (int i = 0; i < 3; i++) {
+//            linkedList.removeFirst();
+//            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+//        }
+//
+//        // 删除链表尾节点
+//        for (int i = 0; i < 2; i++) {
+//            linkedList.removeLast();
+//            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+//        }
+//
+//        // 删除指定索引节点
+//        linkedList.remove(1);
+//        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
 
-        // 修改链表值
-        for (int i = 0; i < linkedList.getSize(); i++) {
-            linkedList.set(i,i);
-            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        // 链表递归增加
+        Random random = new Random();
+        for (int i = 0; i < 1000; i++) {
+            linkedList.add(random.nextInt(100));
         }
-
-        // 得到链表的值
-        System.out.println(linkedList.get(linkedList.getSize() - 1));
-
-        // 删除链表头结点
-        for (int i = 0; i < 3; i++) {
-            linkedList.removeFirst();
-            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
-        }
-
-        // 删除链表尾节点
-        for (int i = 0; i < 2; i++) {
-            linkedList.removeLast();
-            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
-        }
-
-        // 删除指定索引节点
-        linkedList.remove(1);
-        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        System.out.println(linkedList.toString());
     }
 }

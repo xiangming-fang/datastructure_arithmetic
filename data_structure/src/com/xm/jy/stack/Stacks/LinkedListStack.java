@@ -7,7 +7,7 @@ import com.xm.jy.linkedlist.LinkedLists.LinkedList;
  * @date: 2020/10/26 13:10
  * @description: 依赖于自己实现的链表来实现栈
  */
-public class LinkedListStack<E> implements Stack<E> {
+public class LinkedListStack<E extends Comparable<E>> implements Stack<E> {
 
     private LinkedList<E> linkedList;
 
