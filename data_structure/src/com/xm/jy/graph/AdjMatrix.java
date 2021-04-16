@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @date: 2021/4/15 10:02
  * @description: 无向无权图：邻接矩阵 表示
  */
-public class AdjMatrix {
+public class AdjMatrix implements Graph {
 
     private int V;
 
@@ -21,6 +21,18 @@ public class AdjMatrix {
     private int[][] graph;
 
     public AdjMatrix(String pathname){
+        createGraph(pathname);
+    }
+
+    @Override
+    public void validVertex(int w){
+        if (w < 0 || w >= V) {
+            throw new IllegalArgumentException("vertex " + w +"is invalid");
+        }
+    }
+
+    @Override
+    public void createGraph(String pathname) {
         File file = new File(pathname);
         try(Scanner scanner = new Scanner(file)){
             V = scanner.nextInt();
@@ -38,19 +50,12 @@ public class AdjMatrix {
                 graph[a][b] = 1;
                 graph[b][a] = 1;
             }
-         }catch (FileNotFoundException e){
+        }catch (FileNotFoundException e){
             e.printStackTrace();
         }
     }
 
-    // 从文件读取的边是否合法
-    public void validVertex(int w){
-        if (w < 0 || w >= V) {
-            throw new IllegalArgumentException("vertex " + w +"is invalid");
-        }
-    }
-
-    // 某个点有哪些边
+    @Override
     public List<Integer> hasEdge(int w){
         validVertex(w);
         List<Integer> result = new ArrayList<>();
@@ -60,8 +65,8 @@ public class AdjMatrix {
         return result;
     }
 
-    // 某个点的度
-    public int degree(int w){
+    @Override
+    public Integer degree(int w){
         return hasEdge(w).size();
     }
 

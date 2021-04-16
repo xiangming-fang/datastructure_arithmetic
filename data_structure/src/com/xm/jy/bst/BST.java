@@ -241,7 +241,6 @@ public class BST<E extends Comparable<E>> {
         return removeMax(root);
     }
 
-    // 待删除节点的左节点取代待删除节点
     private Node removeMax(Node node) {
         if (node.right == null){
             Node left = node.left;
@@ -310,7 +309,7 @@ public class BST<E extends Comparable<E>> {
 
     public static void main(String[] args) {
         BST<Integer> testBST = new BST<>();
-        int[] bstValue = {8,5,10,6,9,11};
+        int[] bstValue = {8, 5, 10, 6, 9, 11};
         for (int i : bstValue) {
             testBST.add(i);
 //            testBST.secondAdd(i);

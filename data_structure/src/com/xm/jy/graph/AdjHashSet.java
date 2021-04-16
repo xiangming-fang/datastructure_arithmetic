@@ -1,24 +1,23 @@
 package com.xm.jy.graph;
 
-import java.util.LinkedList;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Scanner;
 
 /**
  * @author: albert.fang
- * @date: 2021/4/16 13:22
- * @description: 无向无权图：邻接表(linkedList 链表)
+ * @date: 2021/4/16 22:34
+ * @description: 无向无权图：邻接表(HashSet 哈希表)
  */
-public class AdjList implements Graph {
+public class AdjHashSet implements Graph {
     private int V;
 
     private int E;
 
-    private LinkedList<Integer>[] graph;
+    private HashSet<Integer>[] graph;
 
-    public AdjList(String pathname){
+    public AdjHashSet(String pathname){
         createGraph(pathname);
     }
 
@@ -33,9 +32,9 @@ public class AdjList implements Graph {
         try (Scanner scanner = new Scanner(file)){
             V = scanner.nextInt();
             if (V < 0) throw new IllegalArgumentException("V is must gather zero");
-            graph = new LinkedList[V];
+            graph = new HashSet[V];
             for (int i = 0; i < V; i++) {
-                graph[i] = new LinkedList();
+                graph[i] = new HashSet<>();
             }
             E = scanner.nextInt();
             if (E < 0 ) throw new IllegalArgumentException("E is must gather zero");
@@ -55,14 +54,15 @@ public class AdjList implements Graph {
     }
 
     @Override
-    public List hasEdge(int w){
+    public Iterable<Integer> hasEdge(int w){
         validVertex(w);
         return graph[w];
     }
 
     @Override
     public Integer degree(int w){
-        return hasEdge(w).size();
+        validVertex(w);
+        return graph[w].size();
     }
 
     @Override
@@ -80,10 +80,10 @@ public class AdjList implements Graph {
     }
 
     public static void main(String[] args) {
-        AdjList adjList = new AdjList("data_structure/graph.txt");
-        System.out.println(adjList.toString());
-        System.out.println(adjList.hasEdge(2));
-        System.out.println(adjList.degree(2));
+        AdjHashSet adjHash = new AdjHashSet("data_structure/graph.txt");
+        System.out.println(adjHash.toString());
+        System.out.println(adjHash.hasEdge(2));
+        System.out.println(adjHash.degree(2));
     }
 
 
