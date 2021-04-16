@@ -76,6 +76,23 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    public void secondAdd(E e){
+        root = secondAdd(root,e);
+    }
+
+    private Node secondAdd(Node node, E e) {
+        if (node == null)
+            return new Node(e);
+
+        if (e.compareTo(node.e) < 0){
+            node.left = secondAdd(node.left,e);
+        }
+        else if (e.compareTo(node.e) > 0){
+            node.right = secondAdd(node.right,e);
+        }
+        return node;
+    }
+
     // 判断BST中是否包含该元素
     public boolean contains(E e){
         return contains(root,e);
@@ -296,6 +313,7 @@ public class BST<E extends Comparable<E>> {
         int[] bstValue = {8,5,10,6,9,11};
         for (int i : bstValue) {
             testBST.add(i);
+//            testBST.secondAdd(i);
         }
         System.out.println(" 中序遍历 ");
         testBST.inOrder();
