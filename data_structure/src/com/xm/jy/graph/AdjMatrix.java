@@ -83,6 +83,16 @@ public class AdjMatrix implements Graph {
         return result.toString();
     }
 
+    @Override
+    public Integer V(){
+        return V;
+    }
+
+    @Override
+    public Integer E(){
+        return E;
+    }
+
     public static void main(String[] args) {
         AdjMatrix adjMatrix = new AdjMatrix("data_structure/graph.txt");
         System.out.println(adjMatrix.toString());

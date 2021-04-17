@@ -9,4 +9,8 @@ public interface Graph {
     Integer degree(int w);
     // 顶点的合法性
     void validVertex(int w);
+    // 图有几个顶点
+    Integer V();
+    // 图有几条边
+    Integer E();
 }

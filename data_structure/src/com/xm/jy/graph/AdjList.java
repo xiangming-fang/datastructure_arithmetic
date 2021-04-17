@@ -79,6 +79,16 @@ public class AdjList implements Graph {
         return sb.toString();
     }
 
+    @Override
+    public Integer V(){
+        return V;
+    }
+
+    @Override
+    public Integer E(){
+        return E;
+    }
+
     public static void main(String[] args) {
         AdjList adjList = new AdjList("data_structure/graph.txt");
         System.out.println(adjList.toString());

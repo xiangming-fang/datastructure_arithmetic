@@ -79,6 +79,16 @@ public class AdjTreeSet implements Graph {
         return sb.toString();
     }
 
+    @Override
+    public Integer V(){
+        return V;
+    }
+
+    @Override
+    public Integer E(){
+        return E;
+    }
+
     public static void main(String[] args) {
         AdjTreeSet adjTree = new AdjTreeSet("data_structure/graph.txt");
         System.out.println(adjTree.toString());

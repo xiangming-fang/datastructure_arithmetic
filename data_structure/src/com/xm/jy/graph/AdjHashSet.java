@@ -79,6 +79,16 @@ public class AdjHashSet implements Graph {
         return sb.toString();
     }
 
+    @Override
+    public Integer V(){
+        return V;
+    }
+
+    @Override
+    public Integer E(){
+        return E;
+    }
+
     public static void main(String[] args) {
         AdjHashSet adjHash = new AdjHashSet("data_structure/graph.txt");
         System.out.println(adjHash.toString());
