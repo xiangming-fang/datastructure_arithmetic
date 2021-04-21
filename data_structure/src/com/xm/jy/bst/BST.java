@@ -81,8 +81,10 @@ public class BST<E extends Comparable<E>> {
     }
 
     private Node secondAdd(Node node, E e) {
-        if (node == null)
+        if (node == null){
+            size ++;
             return new Node(e);
+        }
 
         if (e.compareTo(node.e) < 0){
             node.left = secondAdd(node.left,e);

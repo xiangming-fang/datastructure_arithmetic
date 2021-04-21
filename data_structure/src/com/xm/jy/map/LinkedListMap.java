@@ -9,7 +9,7 @@ import com.xm.jy.utils.FileOperatorUtils;
 /**
  * @author: albert.fang
  * @date: 2021/4/21 12:08
- * @description: 基于链表实现映射
+ * @description: 基于链表实现 映射
  */
 public class LinkedListMap<K,V> implements Map<K,V> {
 
