@@ -5,7 +5,7 @@ package com.xm.jy.linkedlist.LinkedLists;
  * @date: 2020/10/26 10:08
  * @description: 链表接口
  */
-public interface List<E> {
+public interface List<E>{
     // 在节点具体索引加入节点值为e的节点（不常用，但是经常用于练习使用）
     void add(int index,E e);
 

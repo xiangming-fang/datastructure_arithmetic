@@ -46,5 +46,8 @@ public class GenHao2 {
         System.out.println(getGenHaoValue(2));
         System.out.println(getGenHaoValue(9));
         System.out.println(getGenHaoValue(4));
+        System.out.println(getGenHaoValue(16));
+        System.out.println(getGenHaoValue(25));
+        System.out.println(getGenHaoValue(36));
     }
 }
