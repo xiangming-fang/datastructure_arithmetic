@@ -126,7 +126,7 @@ public class LinkedListMap<K,V> implements Map<K,V> {
 
     public static void main(String[] args) {
         Instant startTime = Instant.now();
-        Map<String,Integer> linkedListMap = new LinkedListMap<>();
+        LinkedListMap<String,Integer> linkedListMap = new LinkedListMap<>();
         LinkedList<String> wordsList = FileOperatorUtils.getWords("data_structure/pride-and-prejudice.txt");
         System.out.printf("pride-and-prejudice words total ： %d\n" ,wordsList.size());
         for (String temp : wordsList) {
@@ -140,6 +140,10 @@ public class LinkedListMap<K,V> implements Map<K,V> {
         System.out.printf("不重复的有：%d个\n",linkedListMap.getSize());
         System.out.println("pride occur times is " + linkedListMap.get("pride"));
         System.out.println("prejudice occur times is " + linkedListMap.get("prejudice"));
+        System.out.println("\"\" occur times is " + linkedListMap.get(""));
+        System.out.println("them occur times is " + linkedListMap.get("them"));
+        linkedListMap.remove("");
+        System.out.println(linkedListMap.getSize());
         System.out.printf("消耗 %d 毫秒",Duration.between(startTime,Instant.now()).toMillis());
     }
 }

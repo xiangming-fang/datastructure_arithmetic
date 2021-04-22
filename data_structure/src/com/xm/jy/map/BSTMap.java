@@ -41,6 +41,25 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
         size = 0;
     }
 
+    public Node getNode(K key){
+        return getNode(root,key);
+    }
+
+    // 判断以node为根节点的BST中是否包含K 值为key的节点（辅助方法，后面的remove,set,get,contains方法可以减少递归，直接调用该方法）
+    // 并返回该节点
+    private Node getNode(Node node,K key){
+        if (node == null){
+            return null;
+        }
+        if (key.compareTo(node.key) < 0){
+            return getNode(node.left,key);
+        }
+        else if (key.compareTo(node.key) > 0){
+            return getNode(node.right,key);
+        }
+        return node;
+    }
+
     @Override
     public void add(K key, V value) {
         root = add(root,key,value);
@@ -65,11 +84,12 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public V remove(K key) {
-        Node removeNode = remove(root,key);
-        if (removeNode == null){
-            return null;
+        Node node = getNode(root, key);
+        if (node != null){
+            root = remove(root,key);
+            return node.value;
         }
-        return removeNode.value;
+        return null;
     }
 
     private Node remove(Node node, K key) {
@@ -86,6 +106,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
             // 这里的node是待删除节点
             // 1、待删除节点左右孩子都为空
             if (node.left == null && node.right == null){
+                size --;
                 node = null;
             }
             // 2、待删除节点只有左孩子
@@ -93,12 +114,14 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
                 Node delNode = node;
                 node = node.left;
                 delNode.left = null;
+                size --;
             }
             // 3、待删除节点只有右孩子
             else if (node.left == null){
                 Node delNode = node;
                 node = delNode.right;
                 delNode.right = null;
+                size --;
             }
             // 4、待删除节点左右孩子都有
             else {
@@ -155,7 +178,10 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public void set(K key, V value) {
-        set(root,key,value);
+        Node node = getNode(root, key);
+        if (node != null){
+            node.value = value;
+        }
     }
 
     private void set(Node node, K key, V value) {
@@ -175,7 +201,11 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public V get(K key) {
-        return get(root,key);
+        Node node = getNode(root, key);
+        if (node != null){
+            return node.value;
+        }
+        return null;
     }
 
     private V get(Node node, K key) {
@@ -195,7 +225,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public boolean contains(K key) {
-        return get(key) != null;
+        return getNode(root,key) != null;
     }
 
     @Override
@@ -210,7 +240,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     public static void main(String[] args) {
         Instant startTime = Instant.now();
-        Map<String,Integer> bstMap = new BSTMap<>();
+        BSTMap<String,Integer> bstMap = new BSTMap<>();
         LinkedList<String> wordsList = FileOperatorUtils.getWords("data_structure/pride-and-prejudice.txt");
         System.out.printf("pride-and-prejudice words total ： %d\n" ,wordsList.size());
         for (String temp : wordsList) {
@@ -224,6 +254,8 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
         System.out.printf("不重复的有：%d个\n",bstMap.getSize());
         System.out.println("pride occur times is " + bstMap.get("pride"));
         System.out.println("prejudice occur times is " + bstMap.get("prejudice"));
+        System.out.println("\"\" occur times is " + bstMap.get(""));
+        System.out.println("them occur times is " + bstMap.get("them"));
         System.out.printf("消耗 %d 毫秒\n", Duration.between(startTime, Instant.now()).toMillis());
         bstMap.remove("pride");
         System.out.println(bstMap.contains("pride"));

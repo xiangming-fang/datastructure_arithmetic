@@ -24,7 +24,7 @@ public class FileOperatorUtils {
             while (scanner.hasNextLine()){
                 String words = scanner.nextLine().replace(".","")
                         .replace(",","").replace("\"","")
-                        .replace(";","")
+                        .replace(";","").replace("\n","")
                         .replace("?","").toLowerCase();
                 for (String word : words.split(" ")) {
                     result.addFirst(word);
