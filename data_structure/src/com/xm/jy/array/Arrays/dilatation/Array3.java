@@ -178,4 +178,14 @@ public class Array3<E> {
         }
         data = newData;
     }
+
+    // 交换数组下标为k、l的元素
+    public void swap(int k,int l){
+        if (k < 0 || k > size - 1 || l < 0 || l > size - 1){
+            throw new IllegalArgumentException("param is illegal");
+        }
+        E temp = data[k];
+        data[k] = data[l];
+        data[l] = temp;
+    }
 }

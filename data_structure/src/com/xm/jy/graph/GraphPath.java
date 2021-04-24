@@ -51,23 +51,26 @@ public class GraphPath {
         if (!isConnected(t)) {
             return "";
         }
-        ArrayList<Integer> result = new ArrayList();
+        ArrayList<Integer> result = new ArrayList<>();
+        result.add(t);
         while (parents[t] != s){
             result.add(parents[t]);
             t = parents[t];
         }
+        result.add(s);
         Collections.reverse(result);
         StringBuilder sb = new StringBuilder();
         for (Integer w : result) {
             sb.append(w).append(" -> ");
         }
-//        return sb.substring(0,sb.length() - 4);
-        return sb.toString();
+        return sb.substring(0,sb.length() - 4);
+//        return sb.toString();
     }
 
     public static void main(String[] args) {
         Graph graph = new AdjTreeSet("data_structure/graph3.txt");
         GraphPath graphPath = new GraphPath(graph,0);
         System.out.println(graphPath.path(4));
+        System.out.println(graphPath.path(5));
     }
 }

@@ -117,6 +117,23 @@ public class LinkedList<E extends Comparable<E>> implements List<E> {
         return remove(size - 1);
     }
 
+    // 删除链表中第一个值为e的节点
+    public void removeElement(E e){
+        Node prev = dummyHead;
+        while (prev.next != null){
+            if (prev.next.e == e){
+                break;
+            }
+            prev = prev.next;
+        }
+        if (prev.next != null){
+            Node delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next = null;
+        }
+
+    }
+
     @Override
     public void set(int index, E e) {
         if (size <= index || index < 0)
@@ -167,10 +184,14 @@ public class LinkedList<E extends Comparable<E>> implements List<E> {
 //            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
 //        }
 //        // 添加到头部
-//        for (int i = 3; i < 6; i++) {
-//            linkedList.addFirst(i);
-//            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
-//        }
+        for (int i = 3; i < 6; i++) {
+            linkedList.addFirst(i);
+            System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
+        }
+        linkedList.addFirst(3);
+        System.out.println(linkedList.toString());
+        linkedList.removeElement(6);
+        System.out.println(linkedList.toString());
 //        // 按index来添加
 //        linkedList.add(2,2);
 //        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
@@ -201,10 +222,10 @@ public class LinkedList<E extends Comparable<E>> implements List<E> {
 //        System.out.println(linkedList + " 链表大小：" + linkedList.getSize());
 
         // 链表递归增加
-        Random random = new Random();
-        for (int i = 0; i < 1000; i++) {
-            linkedList.add(random.nextInt(100));
-        }
-        System.out.println(linkedList.toString());
+//        Random random = new Random();
+//        for (int i = 0; i < 1000; i++) {
+//            linkedList.add(random.nextInt(100));
+//        }
+//        System.out.println(linkedList.toString());
     }
 }
