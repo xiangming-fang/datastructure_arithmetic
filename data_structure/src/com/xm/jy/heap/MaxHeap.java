@@ -17,7 +17,7 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     // 返回数组下标为index的父亲节点的index
-    public int getParent(int index){
+    private int getParent(int index){
         if (index <= 0){
             throw new IllegalArgumentException("index is illegal");
         }
@@ -25,12 +25,12 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     // 得到节点index的左孩子节点索引
-    public int getLeftChild(int index){
+    private int getLeftChild(int index){
         return 2 * index + 1;
     }
 
     // 节点index的右孩子节点索引
-    public int getRightChild(int index){
+    private int getRightChild(int index){
         return 2 * index + 2;
     }
 
