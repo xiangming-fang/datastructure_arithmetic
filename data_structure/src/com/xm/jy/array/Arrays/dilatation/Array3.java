@@ -24,6 +24,14 @@ public class Array3<E> {
         this(10);
     }
 
+    public Array3(E[] arr){
+        data = (E[])new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
     public int getSize(){
         return size;
     }
@@ -129,6 +137,11 @@ public class Array3<E> {
             throw new IllegalArgumentException("输入的下标不合法");
         }
         E result = data[index];
+        if (index == data.length - 1){
+            data[index] = null;
+            size --;
+            return result;
+        }
         for (int i = index; i < size; i++) {
             data[i] = data[i+1];
         }
