@@ -2,7 +2,9 @@ package com.xm.jy.heap;
 
 import com.xm.jy.array.Arrays.dilatation.Array3;
 import com.xm.jy.queue.Queues.Queue;
+import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -16,6 +18,13 @@ import java.util.Random;
 public class MinHeap<E extends Comparable> implements Queue<E> {
 
     private Array3<E> data;
+
+    private Comparator<? super E> comparator;
+
+    public MinHeap(Comparator<? super E> comparator){
+        this.data = new Array3<>();
+        this.comparator = comparator;
+    }
 
     public MinHeap(int size){
         this.data = new Array3<>(size);
@@ -82,6 +91,23 @@ public class MinHeap<E extends Comparable> implements Queue<E> {
         return getSize() == 0;
     }
 
+    @Override
+    public String toString(){
+        if (!isEmpty()){
+            int size = getSize();
+            StringBuffer result = new StringBuffer();
+            for (int i = 0; i < size; i++) {
+                try {
+                    result.append(dequeue()).append("，");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            return result.substring(0,result.length()-1);
+        }
+        return null;
+    }
+
     // 交换下标为a和下标为b的元素位置
     private void swap(int a,int b) throws Exception {
         E temp = data.get(a);
@@ -91,9 +117,17 @@ public class MinHeap<E extends Comparable> implements Queue<E> {
 
     // 将位置idx的元素上浮
     private void siftUp(int idx) throws Exception {
-        while (idx != 0 && data.get(idx).compareTo(data.get(parent(idx))) < 0){
-            swap(idx,parent(idx));
-            idx = parent(idx);
+        if (comparator == null){
+            while (idx != 0 && data.get(idx).compareTo(data.get(parent(idx))) < 0){
+                swap(idx,parent(idx));
+                idx = parent(idx);
+            }
+        }
+        else {
+            while (idx != 0 && comparator.compare(data.get(idx),data.get(parent(idx))) > 0){
+                swap(idx,parent(idx));
+                idx = parent(idx);
+            }
         }
     }
 
@@ -101,8 +135,14 @@ public class MinHeap<E extends Comparable> implements Queue<E> {
     private void siftDown(int idx) throws Exception {
         int tempIdx = left(idx);
         while (tempIdx < getSize()){
-            if (tempIdx + 1 < getSize() && data.get(tempIdx).compareTo(data.get(tempIdx + 1)) > 0){
-                tempIdx = tempIdx + 1;
+            if (comparator == null){
+                if (tempIdx + 1 < getSize() && data.get(tempIdx).compareTo(data.get(tempIdx + 1)) > 0){
+                    tempIdx = tempIdx + 1;
+                }
+            }else {
+                if (tempIdx + 1 < getSize() && comparator.compare(data.get(tempIdx + 1),data.get(tempIdx)) > 0){
+                    tempIdx = tempIdx + 1;
+                }
             }
             // 如果当前节点小于等于左右节点中的最大节点，那么不必进行交换
             if (data.get(idx).compareTo(data.get(tempIdx)) <= 0){
