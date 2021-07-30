@@ -1,43 +1,43 @@
 package com.xm.jy.set;
 
-import com.xm.jy.linkedlist.LinkedLists.LinkedList;
+import com.xm.jy.linkedlist.LinkedLists.LinkedList1;
 import com.xm.jy.utils.FileOperatorUtils;
 
 import java.time.Duration;
 import java.time.Instant;
 
 public class LinkedListSet<E extends Comparable<E>> implements Set<E> {
-    private LinkedList<E> linkedList;
+    private LinkedList1<E> linkedList1;
 
     public LinkedListSet(){
-        linkedList = new LinkedList<>();
+        linkedList1 = new LinkedList1<>();
     }
 
     @Override
     public void add(E e){
         if (!contains(e)) {
-            linkedList.addFirst(e);
+            linkedList1.addFirst(e);
         }
     }
 
     @Override
     public void remove(E e){
-        linkedList.removeElement(e);
+        linkedList1.removeElement(e);
     }
 
     @Override
     public boolean contains(E e) {
-        return linkedList.contains(e);
+        return linkedList1.contains(e);
     }
 
     @Override
     public boolean isEmpty() {
-        return linkedList.isEmpty();
+        return linkedList1.isEmpty();
     }
 
     @Override
     public int getSize() {
-        return linkedList.getSize();
+        return linkedList1.getSize();
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package com.xm.jy.stack.Stacks;
 
-import com.xm.jy.linkedlist.LinkedLists.LinkedList;
+import com.xm.jy.linkedlist.LinkedLists.LinkedList1;
 
 /**
  * @author: albert.fang
@@ -9,46 +9,46 @@ import com.xm.jy.linkedlist.LinkedLists.LinkedList;
  */
 public class LinkedListStack<E extends Comparable<E>> implements Stack<E> {
 
-    private LinkedList<E> linkedList;
+    private LinkedList1<E> linkedList1;
 
-    public LinkedListStack(LinkedList linkedList) {
-        this.linkedList = linkedList;
+    public LinkedListStack(LinkedList1 linkedList1) {
+        this.linkedList1 = linkedList1;
     }
 
     public LinkedListStack() {
-        this.linkedList = new LinkedList<>();
+        this.linkedList1 = new LinkedList1<>();
     }
 
     @Override
     public E pop() throws Exception {
-        return linkedList.removeFirst();
+        return linkedList1.removeFirst();
     }
 
     @Override
     public E peek() throws Exception {
-        return linkedList.get(0);
+        return linkedList1.get(0);
     }
 
     @Override
     public void push(E e) throws Exception {
-        linkedList.addLast(e);
+        linkedList1.addLast(e);
     }
 
     @Override
     public int getSize() {
-        return linkedList.getSize();
+        return linkedList1.getSize();
     }
 
     @Override
     public boolean isEmpty() {
-        return linkedList.isEmpty();
+        return linkedList1.isEmpty();
     }
 
     @Override
     public String toString() {
         StringBuilder ret = new StringBuilder();
         ret.append("栈顶：");
-        ret.append(linkedList);
+        ret.append(linkedList1);
         ret.append(" 栈底");
         return ret.toString();
     }

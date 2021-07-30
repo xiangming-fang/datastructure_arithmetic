@@ -4,7 +4,7 @@ package com.xm.jy.array;
 /**
  * @ProjectName: datastructure_arithmetic
  * @Package: com.xm.jy.array.Arrays
- * @ClassName: Array1
+ * @ClassName: Array
  * @Author: albert.fang
  * @Description: 动态数组
  * 1、支持泛型
@@ -13,6 +13,7 @@ package com.xm.jy.array;
  * @Date: 2021/7/29 16:38
  */
 public class Array<E> {
+
     private int size;
 
     private E[] data;
@@ -60,6 +61,10 @@ public class Array<E> {
         return remove(size - 1);
     }
 
+    public E removeFirst(){
+        return remove(0);
+    }
+
     // 变更指定下标的元素值
     public E set(int index,E e){
         rangeCheck(index);
@@ -67,10 +72,26 @@ public class Array<E> {
         return e;
     }
 
+    public E setLast(E e){
+        return set(size - 1,e);
+    }
+
+    public E setFirst(E e){
+        return set(0,e);
+    }
+
     // 返回指定下标的元素
     public E get(int index){
         rangeCheck(index);
         return data[index];
+    }
+
+    public E getLast(){
+        return get(size - 1);
+    }
+
+    public E getFirst(){
+        return get(0);
     }
 
     // 返回动态数组，到底存储了几个元素
