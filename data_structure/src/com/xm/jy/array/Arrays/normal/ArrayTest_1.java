@@ -18,7 +18,7 @@ public class ArrayTest_1 {
         return arr[border] + sum(border + 1,arr);
     }
     public static void main(String[] args) throws Exception {
-//        Array array = new Array();
+//        Array1 array = new Array1();
 //        array.addLast(1);
 //        array.addLast(2);
 //        array.addLast(3);

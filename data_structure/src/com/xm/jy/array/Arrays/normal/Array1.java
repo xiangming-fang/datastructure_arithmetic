@@ -5,7 +5,7 @@ package com.xm.jy.array.Arrays.normal;
  * @date: 2020/10/20 12:55
  * @description: 封装一个数组的常用功能
  */
-public class Array {
+public class Array1 {
 
     // 数组的实际大小
     private int size;
@@ -14,12 +14,12 @@ public class Array {
     private int[] data;
 
     // 构造函数指定数组的固定容量初始大小
-    public Array(int capacity){
+    public Array1(int capacity){
         data = new int[capacity];
         size = 0;
     }
 
-    public Array(){
+    public Array1(){
         this(10);
     }
 
