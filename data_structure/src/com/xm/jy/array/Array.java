@@ -19,6 +19,9 @@ public class Array<E> {
     private E[] data;
 
     public Array(int capacity){
+        if (capacity < 0){
+            throw new IndexOutOfBoundsException("初始化数组容量异常：" + capacity);
+        }
         data = (E[])new Object[capacity];
         size = 0;
     }
@@ -108,7 +111,12 @@ public class Array<E> {
         // 扩容50%
         if (nowSize > data.length){
             newLength = data.length + (data.length >> 1);
-            data = (E[])new Object[newLength];
+            if (newLength < nowSize){
+                data = (E[])new Object[nowSize];
+            }
+            else{
+                data = (E[])new Object[newLength];
+            }
             System.arraycopy(oldData, 0, data, 0, oldData.length);
         }
         // 缩容50%

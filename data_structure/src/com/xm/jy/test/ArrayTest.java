@@ -15,7 +15,7 @@ public class ArrayTest {
 
     @Test
     public void addRemoveIndexTest(){
-        Array<String> array = new Array<>();
+        Array<String> array = new Array<>(1);
         array.add(0,"sdfasf");
         array.add(0,"sdfasf");
         array.add(0,"sdfasf");
@@ -28,7 +28,12 @@ public class ArrayTest {
         System.out.println(array.remove(0));
         System.out.println(array.remove(0));
         System.out.println(array.remove(1));
-        System.out.println(array.remove(3));
+        System.out.println(array.removeLast());
+        System.out.println(array.removeLast());
+        System.out.println(array.removeLast());
+        System.out.println(array.removeLast());
+        System.out.println(array.removeLast());
+        System.out.println(array.removeLast());
     }
 
     @Test
