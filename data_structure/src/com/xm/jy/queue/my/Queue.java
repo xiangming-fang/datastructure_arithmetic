@@ -1,6 +1,6 @@
-package com.xm.jy.queue;
+package com.xm.jy.queue.my;
 
-import com.xm.jy.array.Array;
+import com.xm.jy.array.my.Array;
 
 /**
  * @ProjectName: datastructure_arithmetic

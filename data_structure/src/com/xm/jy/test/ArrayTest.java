@@ -1,6 +1,6 @@
 package com.xm.jy.test;
 
-import com.xm.jy.array.Array;
+import com.xm.jy.array.my.Array;
 import org.junit.Test;
 
 /**

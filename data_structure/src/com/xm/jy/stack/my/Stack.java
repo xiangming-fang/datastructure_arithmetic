@@ -1,6 +1,6 @@
-package com.xm.jy.stack;
+package com.xm.jy.stack.my;
 
-import com.xm.jy.array.Array;
+import com.xm.jy.array.my.Array;
 
 /**
  * @ProjectName: datastructure_arithmetic

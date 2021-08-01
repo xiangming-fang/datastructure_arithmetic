@@ -1,6 +1,7 @@
 package com.xm.jy.test;
 
-import com.xm.jy.queue.Queue;
+import com.xm.jy.queue.my.LinkedListQueue;
+import com.xm.jy.queue.my.Queue;
 import org.junit.Test;
 
 /**
@@ -29,6 +30,34 @@ public class QueueTest {
     @Test
     public void replaceAndPeekTest(){
         Queue<String> queue = new Queue<>();
+        queue.offer("asdfdasf");
+        queue.offer("rqwee");
+        queue.offer("2134123");
+        queue.offer("9789678");
+        System.out.println(queue.peek());
+        System.out.println(queue.peek());
+        System.out.println(queue.peek());
+        System.out.println(queue.peek());
+        queue.replace("fxm");
+        System.out.println(queue.peek());
+    }
+
+    @Test
+    public void offerAndPollLinkedListTest(){
+        LinkedListQueue<String> queue = new LinkedListQueue<>();
+        queue.offer("asdfdasf");
+        queue.offer("rqwee");
+        queue.offer("2134123");
+        queue.offer("9789678");
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
+    }
+
+    @Test
+    public void replaceAndPeekLinkedListTest(){
+        LinkedListQueue<String> queue = new LinkedListQueue<>();
         queue.offer("asdfdasf");
         queue.offer("rqwee");
         queue.offer("2134123");
