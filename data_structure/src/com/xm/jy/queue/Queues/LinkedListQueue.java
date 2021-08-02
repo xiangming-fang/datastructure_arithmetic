@@ -77,7 +77,7 @@ public class LinkedListQueue<E> implements Queue<E> {
     @Override
     public E getfront() throws Exception {
         if (isEmpty()){
-            throw new IllegalArgumentException("getfront failed,Queue is empty");
+            throw new IllegalArgumentException("getfront failed,ArrayQueue is empty");
         }
         return head.e;
     }
@@ -95,7 +95,7 @@ public class LinkedListQueue<E> implements Queue<E> {
     @Override
     public String toString() {
         StringBuilder ret = new StringBuilder();
-        ret.append("Queue head: [");
+        ret.append("ArrayQueue head: [");
         Node cur = head;
         while (cur != null){
             ret.append(cur.e.toString()).append(" -> ");

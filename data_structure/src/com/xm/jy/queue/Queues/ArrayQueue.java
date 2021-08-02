@@ -47,7 +47,7 @@ public class ArrayQueue<E> implements Queue<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Queue:head [");
+        sb.append("ArrayQueue:head [");
         for (int i = 0; i < array.getSize(); i++) {
             try {
                 sb.append(array.get(i));

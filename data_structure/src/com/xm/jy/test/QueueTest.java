@@ -1,7 +1,7 @@
 package com.xm.jy.test;
 
+import com.xm.jy.queue.my.ArrayQueue;
 import com.xm.jy.queue.my.LinkedListQueue;
-import com.xm.jy.queue.my.Queue;
 import org.junit.Test;
 
 /**
@@ -16,30 +16,30 @@ public class QueueTest {
 
     @Test
     public void offerAndPollTest(){
-        Queue<String> queue = new Queue<>();
-        queue.offer("asdfdasf");
-        queue.offer("rqwee");
-        queue.offer("2134123");
-        queue.offer("9789678");
-        System.out.println(queue.poll());
-        System.out.println(queue.poll());
-        System.out.println(queue.poll());
-        System.out.println(queue.poll());
+        ArrayQueue<String> arrayQueue = new ArrayQueue<>();
+        arrayQueue.offer("asdfdasf");
+        arrayQueue.offer("rqwee");
+        arrayQueue.offer("2134123");
+        arrayQueue.offer("9789678");
+        System.out.println(arrayQueue.poll());
+        System.out.println(arrayQueue.poll());
+        System.out.println(arrayQueue.poll());
+        System.out.println(arrayQueue.poll());
     }
 
     @Test
     public void replaceAndPeekTest(){
-        Queue<String> queue = new Queue<>();
-        queue.offer("asdfdasf");
-        queue.offer("rqwee");
-        queue.offer("2134123");
-        queue.offer("9789678");
-        System.out.println(queue.peek());
-        System.out.println(queue.peek());
-        System.out.println(queue.peek());
-        System.out.println(queue.peek());
-        queue.replace("fxm");
-        System.out.println(queue.peek());
+        ArrayQueue<String> arrayQueue = new ArrayQueue<>();
+        arrayQueue.offer("asdfdasf");
+        arrayQueue.offer("rqwee");
+        arrayQueue.offer("2134123");
+        arrayQueue.offer("9789678");
+        System.out.println(arrayQueue.peek());
+        System.out.println(arrayQueue.peek());
+        System.out.println(arrayQueue.peek());
+        System.out.println(arrayQueue.peek());
+        arrayQueue.replace("fxm");
+        System.out.println(arrayQueue.peek());
     }
 
     @Test

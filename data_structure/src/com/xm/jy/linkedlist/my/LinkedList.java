@@ -77,21 +77,22 @@ public class LinkedList<E> {
     }
 
     // 修改指定索引的节点值
-    public void set(int index,E e){
+    public E set(int index,E e){
         rangeCheck(index);
         Node<E> cur = dummyHead;
         for (int i = 0; i <= index; i++){
             cur = cur.next;
         }
         cur.e = e;
+        return e;
     }
 
-    public void setLast(E e){
-        set(size-1,e);
+    public E setLast(E e){
+        return set(size - 1, e);
     }
 
-    public void setFirst(E e){
-        set(0,e);
+    public E setFirst(E e){
+        return set(0, e);
     }
 
     // 得到指定索引的节点值

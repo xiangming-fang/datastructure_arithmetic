@@ -11,7 +11,7 @@ import com.xm.jy.linkedlist.my.LinkedList;
  * @Description: 链表实现栈
  * @Date: 2021/8/1 13:53
  */
-public class LinkedListStack<E> {
+public class LinkedListStack<E> implements Stack<E>{
 
     private LinkedList<E> list;
 
@@ -20,21 +20,25 @@ public class LinkedListStack<E> {
     }
 
     // 入栈
+    @Override
     public void push(E e){
         list.addLast(e);
     }
 
     // 出栈
+    @Override
     public E pop(){
         return list.removeLast();
     }
 
     // 替换栈顶元素
-    public void replace(E e){
-        list.setLast(e);
+    @Override
+    public E replace(E e){
+        return list.setLast(e);
     }
 
     // 返回栈顶元素
+    @Override
     public E peek(){
         return list.getLast();
     }

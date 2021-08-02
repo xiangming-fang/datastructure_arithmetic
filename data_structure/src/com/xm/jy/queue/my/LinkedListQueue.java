@@ -10,7 +10,7 @@ import com.xm.jy.linkedlist.my.LinkedList;
  * @Description: 链表实现队列
  * @Date: 2021/8/1 13:51
  */
-public class LinkedListQueue<E> {
+public class LinkedListQueue<E> implements Queue<E>{
     
     private LinkedList<E> list;
 
@@ -19,21 +19,25 @@ public class LinkedListQueue<E> {
     }
 
     // 入队
+    @Override
     public void offer(E e){
         list.addLast(e);
     }
 
     // 出队
+    @Override
     public E poll(){
         return list.removeFirst();
     }
 
     // 替换队首元素
-    public void replace(E e){
-        list.setFirst(e);
+    @Override
+    public E replace(E e){
+        return list.setFirst(e);
     }
 
     // 偷偷看一眼队首元素
+    @Override
     public E peek(){
         return list.getFirst();
     }

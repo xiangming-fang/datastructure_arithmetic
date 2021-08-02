@@ -1,42 +1,24 @@
 package com.xm.jy.stack.my;
 
-import com.xm.jy.array.my.Array;
-
 /**
  * @ProjectName: datastructure_arithmetic
- * @Package: com.xm.jy.stack
+ * @Package: com.xm.jy.stack.my
  * @ClassName: Stack
  * @Author: albert.fang
- * @Description: 栈
- * @Date: 2021/7/30 18:32
+ * @Description: 栈接口
+ * @Date: 2021/8/2 9:38
  */
-public class Stack<E> {
-
-    private Array<E> array;
-
-    public Stack(){
-        array = new Array<>();
-    }
+public interface Stack<E> {
 
     // 入栈
-    public void push(E e){
-        array.addLast(e);
-    }
+    public void push(E e);
 
     // 出栈
-    public E pop(){
-        return array.removeLast();
-    }
+    public E pop();
 
     // 替换栈顶元素
-    public E replace(E e){
-        return array.setLast(e);
-    }
+    public E replace(E e);
 
     // 返回栈顶元素
-    public E peek(){
-        return array.getLast();
-    }
-
-
+    public E peek();
 }

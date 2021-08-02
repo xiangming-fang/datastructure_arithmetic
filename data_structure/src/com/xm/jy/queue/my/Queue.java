@@ -1,40 +1,25 @@
 package com.xm.jy.queue.my;
 
-import com.xm.jy.array.my.Array;
-
 /**
  * @ProjectName: datastructure_arithmetic
- * @Package: com.xm.jy.queue
+ * @Package: com.xm.jy.queue.my
  * @ClassName: Queue
  * @Author: albert.fang
  * @Description: 队列
- * @Date: 2021/7/30 18:48
+ * @Date: 2021/8/2 9:34
  */
-public class Queue<E> {
-
-    private Array<E> array;
-
-    public Queue(){
-        array = new Array<>();
-    }
+public interface Queue<E> {
 
     // 入队
-    public void offer(E e){
-        array.addLast(e);
-    }
+    public void offer(E e);
 
     // 出队
-    public E poll(){
-        return array.removeFirst();
-    }
+    public E poll();
 
     // 替换队首元素
-    public E replace(E e){
-        return array.setFirst(e);
-    }
+    public E replace(E e);
 
     // 偷偷看一眼队首元素
-    public E peek(){
-        return array.getFirst();
-    }
+    public E peek();
+
 }

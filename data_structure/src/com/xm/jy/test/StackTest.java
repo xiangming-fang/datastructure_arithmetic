@@ -1,7 +1,7 @@
 package com.xm.jy.test;
 
+import com.xm.jy.stack.my.ArrayStack;
 import com.xm.jy.stack.my.LinkedListStack;
-import com.xm.jy.stack.my.Stack;
 import org.junit.Test;
 
 /**
@@ -16,7 +16,7 @@ public class StackTest {
 
     @Test
     public void pushAndPopTest(){
-        Stack<String> stack = new Stack<>();
+        ArrayStack<String> stack = new ArrayStack<>();
         stack.push("34234");
         stack.push("342adf34");
         stack.push("asdfdasf");
@@ -29,7 +29,7 @@ public class StackTest {
 
     @Test
     public void replaceAndpeekTest(){
-        Stack<String> stack = new Stack<>();
+        ArrayStack<String> stack = new ArrayStack<>();
         stack.push("asdfds");
         stack.push("23412");
         stack.push("dgfdfg");
