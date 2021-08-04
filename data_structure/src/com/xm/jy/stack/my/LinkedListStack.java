@@ -22,24 +22,24 @@ public class LinkedListStack<E> implements Stack<E>{
     // 入栈
     @Override
     public void push(E e){
-        list.addLast(e);
+        list.addFirst(e);
     }
 
     // 出栈
     @Override
     public E pop(){
-        return list.removeLast();
+        return list.removeFirst();
     }
 
     // 替换栈顶元素
     @Override
     public E replace(E e){
-        return list.setLast(e);
+        return list.setFirst(e);
     }
 
     // 返回栈顶元素
     @Override
     public E peek(){
-        return list.getLast();
+        return list.getFirst();
     }
 }

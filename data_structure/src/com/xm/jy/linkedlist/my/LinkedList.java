@@ -24,7 +24,7 @@ public class LinkedList<E> {
 
         }
 
-        public Node(E e,Node<E> next){
+        Node(E e, Node<E> next){
             this.e = e;
             this.next = next;
         }
@@ -36,12 +36,16 @@ public class LinkedList<E> {
 
     // 在指定索引位置增加一个节点
     public void add(int index,E e){
+        // 1、校验索引的合法性
         rangeCheckForAdd(index);
+        // 2、找到index - 1位置的节点
         Node<E> cur = dummyHead;
         for (int i = 0; i < index; i++){
             cur = cur.next;
         }
         Node<E> next = cur.next;
+        // 3、将index - 1的节点next指向新节点
+        // 注意在创建新节点的时候，传入了新节点的next节点
         cur.next = new Node<>(e, next);
         size ++;
     }
@@ -56,14 +60,19 @@ public class LinkedList<E> {
 
     // 删除指定索引的节点,返回删除节点的值
     public E remove(int index){
+        // 1、index合法性校验
         rangeCheck(index);
+        // 2、找到index - 1 位置的索引
         Node<E> cur = dummyHead;
         for (int i = 0; i < index; i++){
             cur = cur.next;
         }
         Node<E> waitDeleteNode = cur.next;
+        // 3、index - 1位置的next指向之前的next的next。
         // 待删除节点前一个节点指向 待删除节点之后的节点
-        cur.next = cur.next.next;
+        cur.next = waitDeleteNode.next;
+        // 4、修改waitDeleteNode节点next指向null，方便GC回收
+        waitDeleteNode.next = null;
         size --;
         return waitDeleteNode.e;
     }
@@ -78,11 +87,13 @@ public class LinkedList<E> {
 
     // 修改指定索引的节点值
     public E set(int index,E e){
+        // 1、index合法性校验
         rangeCheck(index);
         Node<E> cur = dummyHead;
         for (int i = 0; i <= index; i++){
             cur = cur.next;
         }
+        // 2、修改index节点值
         cur.e = e;
         return e;
     }
@@ -97,11 +108,13 @@ public class LinkedList<E> {
 
     // 得到指定索引的节点值
     public E get(int index){
+        // 1、index合法性校验
         rangeCheck(index);
         Node<E> cur = dummyHead;
         for (int i = 0; i <= index; i++){
             cur = cur.next;
         }
+        // 2、返回index位置的节点值
         return cur.e;
     }
 
