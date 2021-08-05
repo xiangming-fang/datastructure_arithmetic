@@ -1,5 +1,7 @@
 package com.xm.jy.bst.my;
 
+import java.util.List;
+
 /**
  * @ProjectName: datastructure_arithmetic
  * @Package: com.xm.jy.bst.my
@@ -129,6 +131,21 @@ public class BST<E extends Comparable<E>> {
         inorder(node.left,result);
         result.append(node.e).append(" ");
         inorder(node.right,result);
+    }
+
+    // 中序遍历
+    public void inorder(List<E> list){
+        inorder(root,list);
+    }
+
+    // 中序遍历
+    private void inorder(Node node,List<E> list){
+        if (node == null){
+            return;
+        }
+        inorder(node.left,list);
+        list.add(node.e);
+        inorder(node.right,list);
     }
 
     // 辅助方法

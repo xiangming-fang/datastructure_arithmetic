@@ -3,6 +3,9 @@ package com.xm.jy.test;
 import com.xm.jy.bst.my.BST;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * @ProjectName: datastructure_arithmetic
  * @Package: com.xm.jy.test
@@ -122,5 +125,26 @@ public class BSTTest {
         bst.remove(93333);
         bst.inorder();
         System.out.println(bst.getSize());
+    }
+
+    // 创建一个BST，判断是否是一棵正确的BST
+    // 根据bst的中序遍历特性
+    @Test
+    public void bstTest(){
+
+        BST<Integer> bst = new BST<>();
+        Random random = new Random();
+        for (int i = 0; i < 1000000; i++) {
+            bst.add(random.nextInt(Integer.MAX_VALUE));
+        }
+
+        ArrayList<Integer> list = new ArrayList<>();
+        bst.inorder(list);
+        for (int i = 0; i < bst.getSize() - 1; i ++){
+            if (list.get(i + 1) < list.get(i)){
+                System.err.println("bst 创建有误");
+                return;
+            }
+        }
     }
 }
