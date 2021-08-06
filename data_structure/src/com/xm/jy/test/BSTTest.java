@@ -1,5 +1,6 @@
 package com.xm.jy.test;
 
+import com.xm.jy.array.my.Array;
 import com.xm.jy.bst.my.BST;
 import org.junit.Test;
 
@@ -132,13 +133,14 @@ public class BSTTest {
     @Test
     public void bstTest(){
 
+        long start = System.currentTimeMillis();
         BST<Integer> bst = new BST<>();
         Random random = new Random();
         for (int i = 0; i < 1000000; i++) {
             bst.add(random.nextInt(Integer.MAX_VALUE));
         }
-
-        ArrayList<Integer> list = new ArrayList<>();
+        System.out.println(bst.getSize());
+        Array<Integer> list = new Array<>();
         bst.inorder(list);
         for (int i = 0; i < bst.getSize() - 1; i ++){
             if (list.get(i + 1) < list.get(i)){
@@ -146,5 +148,8 @@ public class BSTTest {
                 return;
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println(list.getSize());
+        System.out.println((end - start) / 1000 + "s");
     }
 }

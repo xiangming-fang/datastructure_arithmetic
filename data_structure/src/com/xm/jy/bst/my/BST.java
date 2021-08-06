@@ -1,6 +1,6 @@
 package com.xm.jy.bst.my;
 
-import java.util.List;
+import com.xm.jy.array.my.Array;
 
 /**
  * @ProjectName: datastructure_arithmetic
@@ -134,17 +134,17 @@ public class BST<E extends Comparable<E>> {
     }
 
     // 中序遍历
-    public void inorder(List<E> list){
+    public void inorder(Array<E> list){
         inorder(root,list);
     }
 
     // 中序遍历
-    private void inorder(Node node,List<E> list){
+    private void inorder(Node node,Array<E> list){
         if (node == null){
             return;
         }
         inorder(node.left,list);
-        list.add(node.e);
+        list.addLast(node.e);
         inorder(node.right,list);
     }
 

@@ -3,6 +3,9 @@ package com.xm.jy.test;
 import com.xm.jy.array.my.Array;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * @ProjectName: datastructure_arithmetic
  * @Package: com.xm.jy.test
@@ -63,5 +66,47 @@ public class ArrayTest {
         array.addLast("f");
         array.set(0,"set");
         System.out.println(array.get(array.getSize() - 1));
+    }
+
+    @Test
+    public void testBigArray(){
+        long start = System.currentTimeMillis();
+        Array<Integer> array = new Array<>();
+        Random random = new Random();
+        for (int i = 0; i < 100000000; i++) {
+            array.addLast(random.nextInt(Integer.MAX_VALUE));
+        }
+        System.out.println("array 有几个元素：" + array.getSize());
+        long end = System.currentTimeMillis();
+        System.out.println("插入100000000个数据需要：" + (end - start) / 1000 + "s");
+
+        long s = System.currentTimeMillis();
+        for (int i = 0; i < 100000000; i++) {
+            array.removeLast();
+        }
+        System.out.println("array 有几个元素：" + array.getSize());
+        long e = System.currentTimeMillis();
+        System.out.println("移除100000000个数据需要：" + (e - s) / 1000 + "s");
+    }
+
+    @Test
+    public void testJavaArrayList(){
+        long start = System.currentTimeMillis();
+        ArrayList<Integer> list = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 100000000; i++) {
+            list.add(random.nextInt(Integer.MAX_VALUE));
+        }
+        System.out.println("list 有几个元素：" + list.size());
+        long end = System.currentTimeMillis();
+        System.out.println("插入100000000个数据需要：" + (end - start) / 1000 + "s");
+
+        long s = System.currentTimeMillis();
+        for (int i = 0; i < 100000000; i++) {
+            list.remove(list.size() - 1);
+        }
+        System.out.println("array 有几个元素：" + list.size());
+        long e = System.currentTimeMillis();
+        System.out.println("移除100000000个数据需要：" + (e - s) / 1000 + "s");
     }
 }

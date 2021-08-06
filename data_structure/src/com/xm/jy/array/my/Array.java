@@ -34,7 +34,7 @@ public class Array<E> {
     public void add(int index,E e){
         rangeCheckForAdd(index);
         resize(size + 1);
-        if (size - index >= 0) {
+        if (size - index > 0) {
             System.arraycopy(data, index, data, index + 1, size - index);
         }
         data[index] = e;
@@ -50,7 +50,7 @@ public class Array<E> {
     public E remove(int index){
         rangeCheck(index);
         E e = data[index];
-        if (size - 1 - index >= 0) {
+        if (size - 1 - index > 0) {
             System.arraycopy(data, index + 1, data, index, size - 1 - index);
         }
         // 让gc回收该空间
@@ -105,11 +105,11 @@ public class Array<E> {
     // 改变动态数组的大小
     // nowSize = data.size ++ 或者 data.size --
     private void resize(int nowSize){
-        int newLength;
-        E[] oldData = (E[])new Object[data.length];
-        System.arraycopy(data,0,oldData,0,data.length);
         // 扩容50%
         if (nowSize > data.length){
+            int newLength;
+            E[] oldData = (E[])new Object[data.length];
+            System.arraycopy(data,0,oldData,0,data.length);
             newLength = data.length + (data.length >> 1);
             if (newLength < nowSize){
                 data = (E[])new Object[nowSize];
@@ -121,6 +121,9 @@ public class Array<E> {
         }
         // 缩容50%
         else if (nowSize <= (data.length >> 1)){
+            int newLength;
+            E[] oldData = (E[])new Object[data.length];
+            System.arraycopy(data,0,oldData,0,data.length);
             newLength = data.length >> 1;
             data = (E[])new Object[newLength];
             System.arraycopy(oldData,0,data,0, data.length);
