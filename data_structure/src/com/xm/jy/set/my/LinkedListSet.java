@@ -1,6 +1,6 @@
 package com.xm.jy.set.my;
 
-import com.xm.jy.set.my.LinkedList;
+import com.xm.jy.set.Set;
 
 /**
  * @ProjectName: datastructure_arithmetic
@@ -10,7 +10,7 @@ import com.xm.jy.set.my.LinkedList;
  * @Description: 基于链表实现集合
  * @Date: 2021/8/5 13:50
  */
-public class LinkedListSet<E extends Comparable<E>> {
+public class LinkedListSet<E extends Comparable<E>> implements Set<E> {
 
     private LinkedList<E> list;
 
@@ -18,26 +18,27 @@ public class LinkedListSet<E extends Comparable<E>> {
         list = new LinkedList<>();
     }
 
+    @Override
     public void add(E e){
         list.addFirst(e);
     }
 
+    @Override
     public void remove(E e){
         list.remove(e);
     }
 
-    public void setLast(E e){
-        list.setFirst(e);
-    }
-
-    public E getLast(){
-        return list.getFirst();
-    }
-
+    @Override
     public boolean contains(E e){
         return list.contains(e);
     }
 
+    @Override
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    @Override
     public int getSize(){
         return list.getSize();
     }

@@ -1,5 +1,7 @@
 package com.xm.jy.set.my;
 
+import com.xm.jy.linkedlist.LinkedLists.List;
+
 /**
  * @ProjectName: datastructure_arithmetic
  * @Package: com.xm.jy.linkedlist
@@ -8,7 +10,7 @@ package com.xm.jy.set.my;
  * @Description: 链表
  * @Date: 2021/8/1 12:44
  */
-public class LinkedList<E extends Comparable<E>> {
+public class LinkedList<E extends Comparable<E>> implements List<E> {
 
     private Node<E> dummyHead = new Node<>();
 
@@ -35,6 +37,7 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     // 在指定索引位置增加一个节点
+    @Override
     public void add(int index,E e){
         // 1、校验索引的合法性
         rangeCheckForAdd(index);
@@ -64,6 +67,7 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     // 删除指定索引的节点,返回删除节点的值
+    @Override
     public E remove(int index){
         // 1、index合法性校验
         rangeCheck(index);
@@ -107,7 +111,8 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     // 修改指定索引的节点值
-    public E set(int index,E e){
+    @Override
+    public void set(int index,E e){
         // 1、index合法性校验
         rangeCheck(index);
         Node<E> cur = dummyHead;
@@ -116,18 +121,18 @@ public class LinkedList<E extends Comparable<E>> {
         }
         // 2、修改index节点值
         cur.e = e;
-        return e;
     }
 
-    public E setLast(E e){
-        return set(size - 1, e);
+    public void setLast(E e){
+        set(size - 1, e);
     }
 
-    public E setFirst(E e){
-        return set(0, e);
+    public void setFirst(E e){
+        set(0, e);
     }
 
     // 得到指定索引的节点值
+    @Override
     public E get(int index){
         // 1、index合法性校验
         rangeCheck(index);
@@ -148,6 +153,7 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     // 查看是否包含这个元素
+    @Override
     public boolean contains(E e){
         Node<E> cur = dummyHead;
         while (cur.next != null){

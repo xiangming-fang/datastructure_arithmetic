@@ -47,7 +47,7 @@ public class LinkedList<K extends Comparable<K>,V> {
     }
 
     // 根据指定key移除节点
-    public void remove(K key){
+    public V remove(K key){
         // 1、先判断是否存在这个节点
         if (contains(key)){
             Node<K,V> cur = dummyHead;
@@ -60,7 +60,9 @@ public class LinkedList<K extends Comparable<K>,V> {
             cur.next = wd.next;
             wd.next = null;
             size --;
+            return wd.value;
         }
+        return null;
     }
 
     // 根据key修改指定节点的值
