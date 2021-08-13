@@ -113,6 +113,6 @@ public class ArrayTest {
 
     @Test
     public void testArray(){
-        FileOperatorUtils.getWords("")
+//        FileOperatorUtils.getWords("");
     }
 }

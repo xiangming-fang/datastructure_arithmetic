@@ -42,7 +42,6 @@ public class LinkedListSetTest {
         set.add(125);
         set.add(15);
         set.add(12);
-        set.setLast(66);
         System.out.println(set.toString());
     }
 
@@ -53,8 +52,6 @@ public class LinkedListSetTest {
         set.add(125);
         set.add(15);
         set.add(12);
-        set.setLast(66);
-        System.out.println(set.getLast());
         System.out.println(set.toString());
     }
 

@@ -15,21 +15,21 @@ import org.junit.Test;
 public class LinkedListMapTest {
 
     @Test
-    public void put() {
+    public void add() {
         LinkedListMap<String, String> map = new LinkedListMap<>();
-        map.put("name","方翔鸣");
-        map.put("age","24");
-        map.put("weight","83");
-        map.put("height","173cm");
+        map.add("name","方翔鸣");
+        map.add("age","24");
+        map.add("weight","83");
+        map.add("height","173cm");
     }
 
     @Test
     public void remove() {
         LinkedListMap<String, String> map = new LinkedListMap<>();
-        map.put("name","方翔鸣");
-        map.put("age","24");
-        map.put("weight","83");
-        map.put("height","173cm");
+        map.add("name","方翔鸣");
+        map.add("age","24");
+        map.add("weight","83");
+        map.add("height","173cm");
         map.remove("age");
         map.remove("asdfas");
     }
@@ -37,10 +37,10 @@ public class LinkedListMapTest {
     @Test
     public void set() {
         LinkedListMap<String, String> map = new LinkedListMap<>();
-        map.put("name","方翔鸣");
-        map.put("age","24");
-        map.put("weight","83");
-        map.put("height","173cm");
+        map.add("name","方翔鸣");
+        map.add("age","24");
+        map.add("weight","83");
+        map.add("height","173cm");
         map.set("weight","75");
         System.out.println(map.toString());
     }
@@ -48,10 +48,10 @@ public class LinkedListMapTest {
     @Test
     public void get() {
         LinkedListMap<String, String> map = new LinkedListMap<>();
-        map.put("name","方翔鸣");
-        map.put("age","24");
-        map.put("weight","83");
-        map.put("height","173cm");
+        map.add("name","方翔鸣");
+        map.add("age","24");
+        map.add("weight","83");
+        map.add("height","173cm");
         map.set("weight","75");
         System.out.println(map.get("name"));
     }
@@ -59,10 +59,10 @@ public class LinkedListMapTest {
     @Test
     public void containsKey() {
         LinkedListMap<String, String> map = new LinkedListMap<>();
-        map.put("name","方翔鸣");
-        map.put("age","24");
-        map.put("weight","83");
-        map.put("height","173cm");
+        map.add("name","方翔鸣");
+        map.add("age","24");
+        map.add("weight","83");
+        map.add("height","173cm");
         map.set("weight","75");
         System.out.println(map.containsKey("sdfadsf"));
         System.out.println(map.containsKey("age"));
