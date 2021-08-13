@@ -8,7 +8,7 @@ package com.xm.jy.map.my;
  * @Description: 链表
  * @Date: 2021/8/1 12:44
  */
-public class LinkedList<K extends Comparable<K>,V> {
+public class LinkedList<K extends Comparable<K>,V> implements List<K,V>{
 
     private Node<K,V> dummyHead = new Node<>();
 
@@ -38,6 +38,7 @@ public class LinkedList<K extends Comparable<K>,V> {
     }
 
     // 增加一个节点，如果key已存在，那么不增加
+    @Override
     public void add(K key,V value){
         if (!contains(key)){
             Node<K,V> cur = dummyHead;
@@ -47,6 +48,7 @@ public class LinkedList<K extends Comparable<K>,V> {
     }
 
     // 根据指定key移除节点
+    @Override
     public V remove(K key){
         // 1、先判断是否存在这个节点
         if (contains(key)){
@@ -67,6 +69,7 @@ public class LinkedList<K extends Comparable<K>,V> {
 
     // 根据key修改指定节点的值
     // 节点不存在报错
+    @Override
     public void set(K key,V value){
         if (contains(key)){
             Node<K,V> cur = dummyHead.next;
@@ -82,6 +85,7 @@ public class LinkedList<K extends Comparable<K>,V> {
 
     // 根据key返回指定value
     // key 不存在抛出异常
+    @Override
     public V get(K key){
         if (contains(key)){
             Node<K,V> cur = dummyHead.next;
@@ -96,6 +100,7 @@ public class LinkedList<K extends Comparable<K>,V> {
     }
 
     // 查看链表是否包含这个key
+    @Override
     public boolean contains(K key){
         Node<K,V> cur = dummyHead;
         while (cur.next != null){
@@ -127,11 +132,13 @@ public class LinkedList<K extends Comparable<K>,V> {
     }
 
     // 辅助方法 —— 是否是空链表
+    @Override
     public boolean isEmpty(){
         return size == 0;
     }
 
     // 辅助方法 —— 链表长度
+    @Override
     public int getSize(){
         return size;
     }
