@@ -122,6 +122,7 @@ public class BST<E extends Comparable<E>> {
         System.out.println(result.toString());
     }
 
+
     // 中序遍历
     // 隐含终止条件：node.left = null 或者 node.right = null;
     private void inorder(Node node,StringBuilder result){
@@ -146,6 +147,21 @@ public class BST<E extends Comparable<E>> {
         inorder(node.left,list);
         list.addLast(node.e);
         inorder(node.right,list);
+    }
+
+    // 中序遍历 先右节点，再左节点
+    public void inorderT(Array<E> list){
+        inorderT(root,list);
+    }
+
+    // 中序遍历 先右节点，再左节点
+    private void inorderT(Node node,Array<E> list){
+        if (node == null){
+            return;
+        }
+        inorderT(node.right,list);
+        list.addLast(node.e);
+        inorderT(node.left,list);
     }
 
     // 前序遍历

@@ -141,9 +141,9 @@ public class BSTTest {
         }
         System.out.println(bst.getSize());
         Array<Integer> list = new Array<>();
-        bst.inorder(list);
+        bst.inorderT(list);
         for (int i = 0; i < bst.getSize() - 1; i ++){
-            if (list.get(i + 1) < list.get(i)){
+            if (list.get(i + 1) > list.get(i)){
                 System.err.println("bst 创建有误");
                 return;
             }
