@@ -185,6 +185,7 @@ public class LinkedList<E extends Comparable<E>> implements List<E> {
     }
 
     // 辅助方法 —— 是否是空链表
+    @Override
     public boolean isEmpty(){
         return size == 0;
     }
