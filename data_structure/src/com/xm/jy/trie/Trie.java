@@ -7,7 +7,7 @@ import java.util.TreeMap;
  * @Package: com.xm.jy.trie
  * @ClassName: Trie
  * @Author: albert.fang
- * @Description: 字典树、前缀树
+ * @Description: 字典树、前缀树：专门为字符串设计的数据结构
  * @Date: 2021/10/19 19:19
  */
 public class Trie {
@@ -75,6 +75,20 @@ public class Trie {
         }
         // 如果isword为false，那么也表示不存在
         return cur.isWord;
+    }
+
+    // 查询是否在trie中有单词以prefix为前缀
+    public boolean isPrefix(String prefix){
+        Node cur = root;
+        for (int i = 0; i < prefix.length(); i++) {
+            char c = prefix.charAt(i);
+            if (cur.next.get(c) == null) {
+                return false;
+            }
+            cur = cur.next.get(c);
+        }
+        // 判断前缀，不必再判断isWord是否表示一个单词的结束
+        return true;
     }
 
 }

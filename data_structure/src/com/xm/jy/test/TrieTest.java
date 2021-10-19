@@ -36,6 +36,16 @@ public class TrieTest {
     }
 
     @Test
+    public void triePrefix(){
+        Trie trie = new Trie();
+        trie.add("asdf");
+        trie.add("asdfe");
+        System.out.println(trie.isPrefix("asdf"));
+        System.out.println(trie.isPrefix("asd"));
+        System.out.println(trie.isPrefix("asdfx"));
+    }
+
+    @Test
     public void trieTest(){
         LinkedList<String> words = FileOperatorUtils.getWords("pride-and-prejudice.txt");
         LinkedList<String> words1 = FileOperatorUtils.getWords("pride-and-prejudice.txt");
