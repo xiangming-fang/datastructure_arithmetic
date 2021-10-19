@@ -3,6 +3,7 @@ package com.xm.jy.utils;
 import java.util.LinkedList;
 
 import java.io.*;
+import java.util.List;
 import java.util.Scanner;
 
 /**

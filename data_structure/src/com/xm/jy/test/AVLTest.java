@@ -18,7 +18,7 @@ public class AVLTest {
 
     @Test
     public void testAVLBalancedFactor(){
-        LinkedList<String> words = FileOperatorUtils.getWords("E:\\IdeaProjects\\datastructure_arithmetic\\data_structure\\pride-and-prejudice.txt");
+        LinkedList<String> words = FileOperatorUtils.getWords("pride-and-prejudice.txt");
         AVLTree<String> avl = new AVLTree<>();
         for (String word : words) {
             avl.add(word);
