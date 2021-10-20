@@ -26,7 +26,7 @@ public class UnionFind implements UF{
     // value 集合id
     @Override
     public boolean isConnected(int p, int q) {
-        return id[p] == id[q];
+        return find(p) == find(q);
     }
 
     // 取出节点p对应的集合id
