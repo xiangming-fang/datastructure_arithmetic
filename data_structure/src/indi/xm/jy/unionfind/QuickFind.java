@@ -5,15 +5,15 @@ package indi.xm.jy.unionfind;
  * @Package: com.xm.jy.unionfind
  * @ClassName: UnionFind
  * @Author: albert.fang
- * @Description: 并查集：用来解决连接问题的数据结构
+ * @Description: 并查集：用来解决连接问题的数据结构; find: O(1) , union：O(n)
  * @Date: 2021/10/20 18:25
  */
-public class UnionFind implements UF{
+public class QuickFind implements UF{
 
     // 并查集，具体value表示集合id
     private int[] id;
 
-    public UnionFind(int size){
+    public QuickFind(int size){
         id = new int[size];
         // 这样表示每一个元素在不同的集合编号里
         for (int i = 0; i < id.length; i++) {
