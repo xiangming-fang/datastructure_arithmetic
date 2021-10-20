@@ -2,7 +2,10 @@ package indi.xm.jy.test;
 
 import indi.xm.jy.unionfind.QuickFind;
 import indi.xm.jy.unionfind.QuickUnion;
+import indi.xm.jy.unionfind.UF;
 import org.junit.Test;
+
+import java.util.Random;
 
 /**
  * @ProjectName: datastructure_arithmetic
@@ -34,5 +37,49 @@ public class UnionFindTest {
         quickUnion.unionElements(0,2);
         System.out.println(quickUnion.isConnected(0, 1));
         System.out.println(quickUnion.isConnected(0, 2));
+    }
+
+    @Test
+    public void compareQuickUnionAndQuickFind(){
+
+        // UnionFind1 慢于 UnionFind2
+//        int size = 100000;
+//        int m = 10000;
+
+        int size = 100000;
+        int m = 100000;
+
+        QuickFind uf1 = new QuickFind(size);
+        System.out.println("QuickFind : " + testUF(uf1, m) + " s");
+
+        QuickUnion uf2 = new QuickUnion(size);
+        System.out.println("QuickUnion : " + testUF(uf2, m) + " s");
+
+    }
+
+
+    private static double testUF(UF uf, int m){
+
+        int size = uf.getSize();
+        Random random = new Random();
+
+        long startTime = System.nanoTime();
+
+
+        for(int i = 0 ; i < m ; i ++){
+            int a = random.nextInt(size);
+            int b = random.nextInt(size);
+            uf.unionElements(a, b);
+        }
+
+        for(int i = 0 ; i < m ; i ++){
+            int a = random.nextInt(size);
+            int b = random.nextInt(size);
+            uf.isConnected(a, b);
+        }
+
+        long endTime = System.nanoTime();
+
+        return (endTime - startTime) / 1000000000.0;
     }
 }
