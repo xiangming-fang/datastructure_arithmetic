@@ -6,11 +6,11 @@ package indi.xm.jy.unionfind;
  * @ClassName: QuickUnion
  * @Author: albert.fang
  * @Description: UnionFind：并查集，查：O(h) 并：O(h)
- * 基于quickUnion的优化
+ * 基于size的优化
  * 优化点：在union的过程中，让节点所处树的节点个数少的根节点指向多的那个根节点
  * @Date: 2021/10/20 19:01
  */
-public class UnionFind implements UF {
+public class UnionFind3 implements UF {
 
     // 索引表示节点id
     // value 表示该节点的父节点id
@@ -19,7 +19,7 @@ public class UnionFind implements UF {
     // sz[i] 表示以i为根节点的集合中元素个数
     private int[] sz;
 
-    public UnionFind(int size){
+    public UnionFind3(int size){
 
         parent = new int[size];
         sz = new int[size];
@@ -43,11 +43,10 @@ public class UnionFind implements UF {
         if (p < 0 || p > parent.length){
             throw new IllegalArgumentException("p is out of bound. ");
         }
-        int value = parent[p];
-        while (value != parent[p]){
-            value = parent[value];
+        while (p != parent[p]){
+            p = parent[p];
         }
-        return value;
+        return p;
     }
 
     @Override

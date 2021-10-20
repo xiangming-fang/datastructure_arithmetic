@@ -13,7 +13,7 @@ import java.util.Random;
  * @Description: 并查集测试
  * @Date: 2021/10/20 18:47
  */
-public class UnionFindTest {
+public class UnionFind3Test {
 
     @Test
     public void testQuickFind(){
@@ -44,20 +44,23 @@ public class UnionFindTest {
 //        int size = 100000;
 //        int m = 10000;
 
-        int size = 10000000;
-        int m = 10000000;
+        int size = 100000;
+        int m = 100000;
 
-//        QuickFind uf1 = new QuickFind(size);
-//        System.out.println("QuickFind : " + testUF(uf1, m) + " s");
-//
-//        QuickUnion uf2 = new QuickUnion(size);
-//        System.out.println("QuickUnion : " + testUF(uf2, m) + " s");
+        QuickFind quickFind = new QuickFind(size);
+        System.out.println("QuickFind : " + testUF(quickFind, m) + " s");
 
-        UnionFind uf3 = new UnionFind(size);
-        System.out.println("UnionFind : " + testUF(uf3, m) + " s");
+        QuickUnion quickUnion = new QuickUnion(size);
+        System.out.println("QuickUnion : " + testUF(quickUnion, m) + " s");
+
+        UnionFind1 uf1 = new UnionFind1(size);
+        System.out.println("UnionFind1 : " + testUF(uf1, m) + " s");
+
+        UnionFind3 uf3 = new UnionFind3(size);
+        System.out.println("UnionFind3 : " + testUF(uf3, m) + " s");
 
         UnionFind4 uf4 = new UnionFind4(size);
-        System.out.println("UnionFind : " + testUF(uf4, m) + " s");
+        System.out.println("UnionFind4 : " + testUF(uf4, m) + " s");
 
     }
 

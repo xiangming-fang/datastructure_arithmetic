@@ -36,11 +36,10 @@ public class QuickUnion implements UF {
         if (p < 0 || p > parent.length){
             throw new IllegalArgumentException("p is out of bound. ");
         }
-        int value = parent[p];
-        while (value != parent[p]){
-            value = parent[value];
+        while (p != parent[p]){
+            p = parent[p];
         }
-        return value;
+        return p;
     }
 
     @Override
