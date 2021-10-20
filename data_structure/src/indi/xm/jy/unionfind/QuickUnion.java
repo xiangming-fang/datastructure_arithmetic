@@ -48,7 +48,7 @@ public class QuickUnion implements UF {
         if (!isConnected(p,q)){
             int pRoot = find(p);
             int qRoot = find(q);
-            parent[pRoot] = parent[qRoot];
+            parent[pRoot] = qRoot;
         }
     }
 
