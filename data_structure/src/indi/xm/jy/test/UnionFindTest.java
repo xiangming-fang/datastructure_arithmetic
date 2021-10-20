@@ -47,7 +47,7 @@ public class UnionFindTest {
 //        int size = 100000;
 //        int m = 10000;
 
-        int size = 100000;
+        int size = 10000000;
         int m = 10000000;
 
         QuickFind uf1 = new QuickFind(size);
