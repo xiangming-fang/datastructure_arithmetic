@@ -3,6 +3,7 @@ package indi.xm.jy.test;
 import indi.xm.jy.unionfind.QuickFind;
 import indi.xm.jy.unionfind.QuickUnion;
 import indi.xm.jy.unionfind.UF;
+import indi.xm.jy.unionfind.UnionFind;
 import org.junit.Test;
 
 import java.util.Random;
@@ -47,13 +48,16 @@ public class UnionFindTest {
 //        int m = 10000;
 
         int size = 100000;
-        int m = 100000;
+        int m = 10000000;
 
         QuickFind uf1 = new QuickFind(size);
         System.out.println("QuickFind : " + testUF(uf1, m) + " s");
 
         QuickUnion uf2 = new QuickUnion(size);
         System.out.println("QuickUnion : " + testUF(uf2, m) + " s");
+
+        UnionFind uf3 = new UnionFind(size);
+        System.out.println("UnionFind : " + testUF(uf3, m) + " s");
 
     }
 
