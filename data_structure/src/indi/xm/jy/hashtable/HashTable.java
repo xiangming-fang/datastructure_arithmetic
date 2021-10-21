@@ -22,8 +22,17 @@ public class HashTable<K,V> {
 
     private int size;
 
+    // 平均每一个位置的元素大于容忍上限，进行扩容
+    private static final int upperTol = 10;
+
+    // 平均每一个位置的元素小于容忍下限，进行缩容
+    private static final int lowerTol = 2;
+
+    // 初始容量
+    private static final int initCapacity = 7;
+
     public HashTable(int M){
-        this.M = M;
+        this.M = initCapacity;
         size = 0;
         hashtable = new TreeMap[M];
         for (int i = 0; i < M; i++) {
@@ -57,6 +66,11 @@ public class HashTable<K,V> {
         else {
             map.put(key,value);
             size ++;
+
+            // size/m >= upperTol
+            if (size >= upperTol * M){
+                resize(2 * M);
+            }
         }
     }
 
@@ -66,6 +80,12 @@ public class HashTable<K,V> {
         if (map.containsKey(key)){
             res = map.remove(key);
             size --;
+
+            // size/m < lowerTol
+            // 注意边界处理，不管怎么缩容，不能小于initCapacity
+            if (size < lowerTol * M && M / 2 >= initCapacity){
+                resize(2 * M);
+            }
         }
         return res;
     }
@@ -91,6 +111,27 @@ public class HashTable<K,V> {
             throw new IllegalArgumentException(key + "doesn't exist");
         }
         return map.get(key);
+    }
+
+    private void resize(int newM){
+
+        TreeMap<K,V>[] newHashTable = new TreeMap[newM];
+        for (int i = 0; i < newM; i++) {
+            newHashTable[i] = new TreeMap<>();
+        }
+        // 保存一份 oldM 用于遍历
+        int oldM = M;
+        // 为了重新计算hash
+        this.M = newM;
+        for (int i = 0; i < oldM; i++) {
+            TreeMap<K, V> map = hashtable[i];
+            // 遍历map中所有元素
+            for (K k : map.keySet()) {
+                newHashTable[hash(k)].put(k,map.get(k));
+            }
+        }
+
+        this.hashtable = newHashTable;
     }
 
 }

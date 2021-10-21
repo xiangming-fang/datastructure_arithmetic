@@ -53,6 +53,8 @@ public class HashTest {
 
     @Test
     public void testDelSymbol(){
-        System.out.println( -7 & 0xfffffff );
+//        System.out.println( -7 & 0x7FFFFFFF );
+        int i = Integer.MAX_VALUE - 8;
+
     }
 }
