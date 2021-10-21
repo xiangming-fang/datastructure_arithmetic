@@ -221,8 +221,10 @@ public class AVLTree<E extends Comparable<E>> {
         }
         // 重新计算高度值
         node.height = 1 + Math.max(getHeight(node.left),getHeight(node.right));
+
         // 平衡因子
         int balanceFactor = getBalanceFactor(node);
+
         if (Math.abs(balanceFactor) > 1){
             System.out.println("unbalanced : " + balanceFactor);
         }

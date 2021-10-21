@@ -1,9 +1,11 @@
 package indi.xm.jy.test;
 
 import indi.xm.jy.avl.AVLTree;
+import indi.xm.jy.utils.FileOperation;
 import indi.xm.jy.utils.FileOperatorUtils;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -18,7 +20,8 @@ public class AVLTest {
 
     @Test
     public void testAVLBalancedFactor(){
-        LinkedList<String> words = FileOperatorUtils.getWords("pride-and-prejudice.txt");
+        ArrayList<String> words = new ArrayList<>();
+        FileOperation.readFile("pride-and-prejudice.txt",words);
         AVLTree<String> avl = new AVLTree<>();
         for (String word : words) {
             avl.add(word);
