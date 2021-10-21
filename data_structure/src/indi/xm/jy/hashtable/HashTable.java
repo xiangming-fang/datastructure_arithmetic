@@ -32,7 +32,7 @@ public class HashTable<K,V> {
     private static final int initCapacity = 7;
 
     public HashTable(int M){
-        this.M = initCapacity;
+        this.M = M;
         size = 0;
         hashtable = new TreeMap[M];
         for (int i = 0; i < M; i++) {
@@ -41,7 +41,7 @@ public class HashTable<K,V> {
     }
 
     public HashTable(){
-        this(97);
+        this(initCapacity);
     }
 
     // 哈希函数
