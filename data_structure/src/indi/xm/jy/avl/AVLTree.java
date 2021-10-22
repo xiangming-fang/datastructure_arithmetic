@@ -52,31 +52,77 @@ public class AVLTree<E extends Comparable<E>> {
         }
 
         // 2、更小问题
+        // 删除以后需要返回的新的node节点
+        Node retNode;
         if (e.compareTo(node.e) == 0){
-            if (node.left == null && node.right == null){
+
+            // 待删除节点左子树为空的情况
+            if(node.left == null){
+                Node rightNode = node.right;
+                node.right = null;
                 size --;
-                return null;
+                // return rightNode;
+                retNode = rightNode;
             }
-            if (node.right == null){
-                Node maxNode = getMaxNode(node.left);
-                maxNode.left = removeMaxNode(node.left);
+
+            // 待删除节点右子树为空的情况
+            else if(node.right == null){
+                Node leftNode = node.left;
+                node.left = null;
                 size --;
-                return maxNode;
+                // return leftNode;
+                retNode = leftNode;
             }
-            // 该节点没有左节点或者两个节点都有
-            Node minNode = getMinNode(node.right);
-            minNode.right = removeMinNode(node.right);
-            size --;
-            return minNode;
+            else {
+                // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+                // 用这个节点顶替待删除节点的位置
+                Node minNode = getMinNode(node.right);
+                minNode.right = remove(node.right,minNode.e);
+                minNode.left = node.left;
+                node.left = node.right = null;
+                retNode =  minNode;
+            }
         }
         else if (e.compareTo(node.e) < 0){
             node.left = remove(node.left,e);
-            return node;
+            retNode =  node;
         }
         else {
             node.right = remove(node.right,e);
-            return node;
+            retNode = node;
         }
+
+        if (retNode == null){
+            return null;
+        }
+
+        // 更新height
+        retNode.height = 1 + Math.max(getHeight(retNode.right),getHeight(retNode.left));
+
+        int balanceFactor = getBalanceFactor(retNode);
+
+        // 1、插入元素在不平衡节点的左侧的左侧 （右旋转）(LL)
+        if (balanceFactor > 1 && getBalanceFactor(retNode.left) >= 0){
+            return rightRotate(retNode);
+        }
+
+        // 2、插入元素在不平衡节点的左侧的右侧 （LR）
+        if (balanceFactor > 1 && getBalanceFactor(retNode.left) < 0){
+            retNode.left = leftRotate(retNode.left);
+            return rightRotate(retNode);
+        }
+
+        // 3、插入元素在不平衡节点的右侧的右侧 （左旋转）(RR)
+        if (balanceFactor < -1 && getBalanceFactor(retNode.right) <= 0){
+            return leftRotate(retNode);
+        }
+
+        // 4、插入元素在不平衡节点的右侧的左侧 （RL）
+        if (balanceFactor < - 1 && getBalanceFactor(retNode.right) > 0){
+            retNode.right = rightRotate(retNode.right);
+            return leftRotate(retNode);
+        }
+        return retNode;
     }
 
     // 修改avl中最大的元素节点值

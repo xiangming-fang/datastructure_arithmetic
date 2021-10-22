@@ -25,9 +25,21 @@ public class AVLTest {
         AVLTree<String> avl = new AVLTree<>();
         for (String word : words) {
             avl.add(word);
+//            if (!avl.isBalance() || !avl.isBST()){
+//                throw new RuntimeException("添加操作 发生 不平衡或者不是BST");
+//            }
         }
         System.out.println(avl.isBST());
         System.out.println(avl.isBalance());
+        System.out.println(avl.getSize());
+
+        for (String word : words) {
+            avl.remove(word);
+            if (!avl.isBalance() || !avl.isBST()){
+                throw new RuntimeException("删除操作 发生 不平衡或者不是BST  " + avl.isBalance() + "  " + avl.isBST());
+            }
+        }
+        System.out.println(avl.getSize());
 
     }
 }

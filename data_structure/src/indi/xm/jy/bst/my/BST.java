@@ -51,20 +51,24 @@ public class BST<E extends Comparable<E>> {
 
         // 2、更小问题
         if (e.compareTo(node.e) == 0){
-            if (node.left == null && node.right == null){
+            if (node.left == null){
+                Node rightNode = node.right;
+                node.right = null;
                 size --;
-                return null;
+                return rightNode;
             }
             if (node.right == null){
-                Node maxNode = getMaxNode(node.left);
-                maxNode.left = removeMaxNode(node.left);
+                Node leftNode = node.left;
+                node.left = null;
                 size --;
-                return maxNode;
+                return leftNode;
             }
-            // 该节点没有左节点或者两个节点都有
+            // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+            // 用这个节点顶替待删除节点的位置
             Node minNode = getMinNode(node.right);
-            minNode.right = removeMinNode(node.right);
-            size --;
+            minNode.right = remove(node.right,minNode.e);
+            minNode.left = node.left;
+            node.left = node.right = null;
             return minNode;
         }
         else if (e.compareTo(node.e) < 0){

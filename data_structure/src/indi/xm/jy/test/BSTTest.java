@@ -2,8 +2,10 @@ package indi.xm.jy.test;
 
 import indi.xm.jy.array.my.Array;
 import indi.xm.jy.bst.my.BST;
+import indi.xm.jy.utils.FileOperation;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -150,5 +152,21 @@ public class BSTTest {
         long end = System.currentTimeMillis();
         System.out.println(list.getSize());
         System.out.println((end - start) / 1000 + "s");
+    }
+
+    @Test
+    public void testBST(){
+        ArrayList<String> words = new ArrayList<>();
+        FileOperation.readFile("pride-and-prejudice.txt",words);
+        BST<String> avl = new BST<>();
+        for (String word : words) {
+            avl.add(word);
+        }
+        System.out.println(avl.getSize());
+
+        for (String word : words) {
+            avl.remove(word);
+        }
+        System.out.println(avl.getSize());
     }
 }
