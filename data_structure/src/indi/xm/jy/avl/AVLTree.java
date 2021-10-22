@@ -226,10 +226,79 @@ public class AVLTree<E extends Comparable<E>> {
         int balanceFactor = getBalanceFactor(node);
 
         if (Math.abs(balanceFactor) > 1){
-            System.out.println("unbalanced : " + balanceFactor);
+//            System.out.println("unbalanced : " + balanceFactor);
         }
+
+        // 1、插入元素在不平衡节点的左侧的左侧 （右旋转）(LL)
+        if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0){
+            return rightRotate(node);
+        }
+
+        // 2、插入元素在不平衡节点的左侧的右侧 （LR）
+        if (balanceFactor > 1 && getBalanceFactor(node.left) < 0){
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+
+        // 3、插入元素在不平衡节点的右侧的右侧 （左旋转）(RR)
+        if (balanceFactor < -1 && getBalanceFactor(node.right) <= 0){
+            return leftRotate(node);
+        }
+
+        // 4、插入元素在不平衡节点的右侧的左侧 （RL）
+        if (balanceFactor < - 1 && getBalanceFactor(node.right) > 0){
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
+        }
+
         // 相等的元素直接忽略
         return node;
+    }
+
+    // 对节点y进行向右旋转操作，返回旋转后新的根节点x
+    //        y                              x
+    //       / \                           /   \
+    //      x   T4     向右旋转 (y)        z     y
+    //     / \       - - - - - - - ->    / \   / \
+    //    z   T3                       T1  T2 T3 T4
+    //   / \
+    // T1   T2
+    private Node rightRotate(Node y){
+        Node x = y.left;
+        Node T3 = x.right;
+
+        // 向右旋转的过程
+        x.right = y;
+        y.left = T3;
+
+        // 更新height
+        y.height = Math.max(getHeight(y.right),getHeight(y.left)) + 1;
+        x.height = Math.max(getHeight(x.right),getHeight(x.left)) + 1;
+
+        return x;
+    }
+
+    // 对节点y进行向左旋转操作，返回旋转后新的根节点x
+    //    y                             x
+    //  /  \                          /   \
+    // T1   x      向左旋转 (y)       y     z
+    //     / \   - - - - - - - ->   / \   / \
+    //   T2  z                     T1 T2 T3 T4
+    //      / \
+    //     T3 T4
+    private Node leftRotate(Node y){
+        Node x = y.right;
+        Node T2 = x.left;
+
+        // 向左旋转的过程
+        x.left = y;
+        y.right = T2;
+
+        // 更新height
+        y.height = Math.max(getHeight(y.right),getHeight(y.left)) + 1;
+        x.height = Math.max(getHeight(x.right),getHeight(x.left)) + 1;
+
+        return x;
     }
 
     /**
