@@ -78,7 +78,7 @@ public class BinarySearch {
         return index;
     }
 
-    // 二分查找：(4) 局部最小问题
+    // 二分查找：(4) 局部最值问题
     public int binarySearch4(int[] arr){
         if (arr.length < 2){
             return 0;
@@ -103,6 +103,8 @@ public class BinarySearch {
         }
         return mid;
     }
+
+
     // (1) 对数器
     private boolean detector(){
         int[] ints = ArrayUtil.generatorOrderArray();
