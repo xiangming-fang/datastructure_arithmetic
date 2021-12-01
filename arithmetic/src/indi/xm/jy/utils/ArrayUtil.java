@@ -12,6 +12,37 @@ import java.util.Random;
  */
 public class ArrayUtil {
 
+    // 产生一个有序数组
+    public static int[] generatorOrderArray(){
+        Random random = new Random();
+        int len = random.nextInt(10000) + 1;
+        int[] ints = new int[len];
+        for (int i = 0; i < ints.length; i++) {
+            ints[i] = i;
+        }
+        return ints;
+    }
+
+    // 产生一个有序 & 有重复数字的数组
+    public static int[] generatorOrderDuplicatedArray(){
+        Random random = new Random();
+        int len = random.nextInt(10000) + 1;
+        int[] ints = new int[len];
+        int start = random.nextInt(len);
+        int end = random.nextInt(len);
+        int min = Math.min(start,end);
+        int max = Math.max(start,end);
+        for (int i = 0; i < ints.length; i++) {
+            if ( i >= min && i <= max){
+                ints[i] = min;
+            }else {
+                ints[i] = i;
+            }
+
+        }
+        return ints;
+    }
+
     // 产生一个随机数组
     public static int[] generatorArray(){
         Random random = new Random();

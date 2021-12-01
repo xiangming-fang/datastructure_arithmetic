@@ -1,4 +1,4 @@
-package indi.xm.jy;
+package indi.xm.jy.search;
 
 /**
  * @author: albert.fang
