@@ -1,5 +1,6 @@
 package indi.xm.jy.sort;
 
+import indi.xm.jy.utils.ArrayUtil;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -57,21 +58,20 @@ public class QuickSort {
 
     @Test
     public void test(){
-//        int[] arr = {4, 85, 6, 5, 3, 7, 56, 9};
-//        int[] arr = { 6, 5, 2, 7, 3, 9, 8, 4, 10, 1 };
-//        int[] arr = {1, 3, 3, 5, 6, 7, 56, 9};
-        int[] arr = new int[1000000];
-        Random random = new Random();
-        for (int i = 0; i < 1000000; i++) {
-            arr[i] = random.nextInt(1000000) + 1;
-        }
-        quickSort(arr);
-        for (int j = 1; j < 1000000; j++) {
-            if (arr[j] < arr[j-1] ){
-                System.err.println("快排失败");
-                return;
+        for (int i = 0; i < 10000; i++) {
+            if (!detector()){
+                System.out.println("失败了");
             }
         }
-        System.out.println("快排成功");
+    }
+
+    // 对数器
+    private boolean detector(){
+        int[] ints = ArrayUtil.generatorArray();
+        int[] ans = new int[ints.length];
+        System.arraycopy(ints,0,ans,0,ints.length);
+        quickSort(ints);
+        Arrays.sort(ans);
+        return ArrayUtil.isEquals(ints, ans);
     }
 }
