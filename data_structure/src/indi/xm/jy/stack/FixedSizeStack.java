@@ -18,6 +18,9 @@ public class FixedSizeStack {
     int size = 0;
 
     public FixedSizeStack(int size){
+        if (size <= 0 ){
+            throw new RuntimeException("固定大小非法");
+        }
         this.arr = new int[size];
     }
 
