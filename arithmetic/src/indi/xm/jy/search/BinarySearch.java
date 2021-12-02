@@ -79,6 +79,7 @@ public class BinarySearch {
     }
 
     // 二分查找：(4) 局部最值问题
+    // 这里是最小值
     public int binarySearch4(int[] arr){
         if (arr.length < 2){
             return 0;
@@ -98,8 +99,9 @@ public class BinarySearch {
             }
             if (arr[mid - 1] < arr[mid] && arr[mid + 1] > arr[mid]){
                 right = mid;
+            }else {
+                left = mid;
             }
-            left = mid;
         }
         return mid;
     }
@@ -117,6 +119,45 @@ public class BinarySearch {
         return binarySearch(ints, target) == set.contains(target);
     }
 
+    // (2) 对数器
+    private boolean detector2(){
+        int[] ints = ArrayUtil.generatorOrderDuplicatedArray(1000);
+        int index = binarySearch2(ints, 1000);
+        return index == 990;
+    }
+
+    // (3) 对数器
+    private boolean detector3(){
+        int[] ints = ArrayUtil.generatorOrderDuplicatedArray(1000);
+        int index = binarySearch3(ints, 1000);
+        return index == 1000;
+    }
+
+    // (4) 对数器
+    private boolean detector4(){
+        int[] ans = ArrayUtil.generatorArray();
+        int index = binarySearch4(ans);
+        if (index == -1){
+            System.out.println("不存在局部最小值");
+            System.out.println(Arrays.toString(ans));
+            return false;
+        }
+        // 只有一个元素
+        if (index == 0 && ans.length < 2){
+            return true;
+        }
+        // 第一位是局部最小值
+        if (index == 0 && ans[1] > ans[0]){
+            return true;
+        }
+        // 倒数第一位是局部最小值
+        if (index == ans.length - 1 && ans[index] < ans[ans.length - 2]){
+            return true;
+        }
+        // 中间产生局部最小值
+        return ans[index] < ans[index - 1] && ans[index] < ans[index + 1];
+    }
+
     @Test
     public void test(){
         for (int i = 0; i < 100000; i++) {
@@ -128,24 +169,28 @@ public class BinarySearch {
 
     @Test
     public void test2(){
-        System.out.println(binarySearch2(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}, 2)); // 1
-        System.out.println(binarySearch2(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}, 3)); // 7
-        System.out.println(binarySearch2(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}, 1)); // 0
-        System.out.println(binarySearch2(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3,5,5,5}, 4)); // 12
-        System.out.println(binarySearch2(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3,5,5,5}, 8)); // -1
+        for (int i = 0; i < 200000; i++) {
+            if (!detector2()) {
+                throw new RuntimeException(">= target的最左边界有误");
+            }
+        }
     }
 
     @Test
     public void test3() {
-        System.out.println(binarySearch3(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}, 2)); // 6
-        System.out.println(binarySearch3(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}, 3)); // 11
-        System.out.println(binarySearch3(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3}, 1)); // 0
-        System.out.println(binarySearch3(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3,5,5,5}, 4)); // 11
-        System.out.println(binarySearch3(new int[]{1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3,5,5,5}, 8)); // 14
+        for (int i = 0; i < 200000; i++) {
+            if (!detector3()) {
+                throw new RuntimeException("<= target的最右边界有误");
+            }
+        }
     }
 
     @Test
     public void test4(){
-        System.out.println(binarySearch4(new int[]{7,5,1,2,3,4}));
+        for (int i = 0; i < 200000; i++) {
+            if (!detector4()) {
+                throw new RuntimeException("局部最小查找有误");
+            }
+        }
     }
 }

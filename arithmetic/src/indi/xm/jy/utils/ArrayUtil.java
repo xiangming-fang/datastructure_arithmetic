@@ -24,21 +24,17 @@ public class ArrayUtil {
     }
 
     // 产生一个有序 & 有重复数字的数组
-    public static int[] generatorOrderDuplicatedArray(){
+    public static int[] generatorOrderDuplicatedArray(int duplicatedNum){
         Random random = new Random();
-        int len = random.nextInt(10000) + 1;
+        int len = random.nextInt(10000) + duplicatedNum + 1;
         int[] ints = new int[len];
-        int start = random.nextInt(len);
-        int end = random.nextInt(len);
-        int min = Math.min(start,end);
-        int max = Math.max(start,end);
         for (int i = 0; i < ints.length; i++) {
-            if ( i >= min && i <= max){
-                ints[i] = min;
+            // 重复位置
+            if ( i >= duplicatedNum - 10 && i <= duplicatedNum){
+                ints[i] = duplicatedNum;
             }else {
                 ints[i] = i;
             }
-
         }
         return ints;
     }
