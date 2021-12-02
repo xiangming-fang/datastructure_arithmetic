@@ -42,10 +42,10 @@ public class ArrayUtil {
     // 产生一个随机数组
     public static int[] generatorArray(){
         Random random = new Random();
-        int len = random.nextInt(10000) + 1;
+        int len = random.nextInt(1000) + 1;
         int[] ints = new int[len];
         for (int i = 0; i < ints.length; i++) {
-            ints[i] = random.nextInt(100000);
+            ints[i] = random.nextInt(10000);
         }
         return ints;
     }
@@ -60,7 +60,7 @@ public class ArrayUtil {
         }
         for (int i = 0; i < a.length; i++) {
             if (a[i] != b[i]) {
-                System.out.println("不相等……");
+                System.out.println("不相等……" + i);
                 return false;
             }
         }
