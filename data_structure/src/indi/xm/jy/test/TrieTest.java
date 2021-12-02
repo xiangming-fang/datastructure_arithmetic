@@ -1,6 +1,7 @@
 package indi.xm.jy.test;
 
 import indi.xm.jy.set.BSTSet;
+import indi.xm.jy.trie.SensitiveTrieUtil;
 import indi.xm.jy.trie.Trie;
 import indi.xm.jy.utils.FileOperatorUtils;
 import org.junit.Test;
@@ -16,6 +17,12 @@ import java.util.LinkedList;
  * @Date: 2021/10/19 19:32
  */
 public class TrieTest {
+
+    @Test
+    public void sensitiveTrieTest(){
+        SensitiveTrieUtil sensitiveTrieUtil = new SensitiveTrieUtil();
+        System.out.println(sensitiveTrieUtil.trie.getSize());
+    }
 
     @Test
     public void trieAdd(){
