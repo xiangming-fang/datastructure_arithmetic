@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @Package: indi.xm.jy.bit
  * @ClassName: TwoNumsOccurOneTime
  * @Author: albert.fang
- * @Description: 两个数字出现一次
+ * @Description: 两个数字出现一次，其余均出现偶数次 找出这出现一次的数 ^,&,n & (~n + 1)
  * @Date: 2021/12/2 15:18
  */
 public class TwoNumsOccurOneTime {
