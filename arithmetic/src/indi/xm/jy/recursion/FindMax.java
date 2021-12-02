@@ -21,11 +21,10 @@ public class FindMax {
         if (left == right){
             return arr[left];
         }
-        int res = 0;
         int mid = left + ((right - left) >> 1);
-        res = Math.max(res,findMax(arr,left,mid));
-        res = Math.max(res,findMax(arr,mid + 1,right));
-        return res;
+        int leftMax = findMax(arr,left,mid);
+        int rightMax = findMax(arr,mid + 1,right);
+        return Math.max(leftMax,rightMax);
     }
 
     // 对数器
