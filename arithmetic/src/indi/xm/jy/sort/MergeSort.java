@@ -78,14 +78,18 @@ public class MergeSort {
         // 只有归并的长度小于len才需要再继续归并
         while (mergeSize < len){
             int left = 0;
-            int right;
+            int right,mid;
             while (left < len){
-                // 每次都要计算right下标
-                right = Math.min(left + 2 * mergeSize - 1,len - 1);
-                // 如果[left，right]的范围长度小于merge的长度，那么不必继续
-                if (right - left + 1 > mergeSize){
-                    merge(arr,left,left + mergeSize - 1,right);
+                // 先计算mid
+                mid = left + mergeSize - 1;
+                // 中点都大于等于len了，那就不必继续了
+                // 注意语意，这里是有等号的，为什么等也不行？因为在等于的情况下，已经是越界了
+                // 长度为len的数组，最后一个元素下标是len-1，所以为len已经越界
+                if (mid >= len){
+                    break;
                 }
+                right = Math.min(mid + mergeSize,len - 1);
+                merge(arr,left,mid,right);
                 left = right + 1;
             }
             // 一个优化，防止溢出
