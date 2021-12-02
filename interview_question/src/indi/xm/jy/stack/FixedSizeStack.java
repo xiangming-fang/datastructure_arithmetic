@@ -1,7 +1,5 @@
 package indi.xm.jy.stack;
 
-import org.junit.Test;
-
 /**
  * @ProjectName: datastructure_arithmetic
  * @Package: indi.xm.jy.stack
