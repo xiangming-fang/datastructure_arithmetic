@@ -1,7 +1,5 @@
 package indi.xm.jy.queue;
 
-import indi.xm.jy.set.my.LinkedList;
-
 /**
  * @ProjectName: datastructure_arithmetic
  * @Package: indi.xm.jy.queue
