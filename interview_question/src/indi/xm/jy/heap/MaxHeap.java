@@ -22,6 +22,10 @@ public class MaxHeap {
         this.size = 0;
     }
 
+    public int getSize(){
+        return size;
+    }
+
     // 往大根堆中添加一个元素
     public void offer(int value){
         if (isFull()){
@@ -107,7 +111,9 @@ public class MaxHeap {
     private boolean isEmpty(){
         return size == 0;
     }
+}
 
+class MaxHeapTest{
     public static void main(String[] args) {
         for (int i = 0; i < 100; i++) {
             if (!detector(10000)) {
@@ -132,7 +138,8 @@ public class MaxHeap {
                 return false;
             }
         }
-        return true;
+        // 这里是判断自己实现的大根堆移除之后的size 和 pq size 是否一样
+        // 如果不一样，说明maxHeap 的size 维护错误
+        return maxHeap.getSize() == pq.size();
     }
-
 }
