@@ -1,4 +1,4 @@
-package indi.xm.jy.sort;
+package indi.xm.jy.sort.medium;
 
 import indi.xm.jy.utils.ArrayUtil;
 import org.junit.Test;
