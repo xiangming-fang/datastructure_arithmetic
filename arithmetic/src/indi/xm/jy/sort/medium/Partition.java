@@ -59,6 +59,39 @@ public class Partition {
         return new int[]{left,right};
     }
 
+    public void quickSort(int[] arr){
+        if (arr == null || arr.length < 2){
+            return;
+        }
+        quickSort(arr,-1,arr.length);
+    }
+
+    // 左开右开
+    private void quickSort(int[] arr, int left, int right) {
+        if (right - left <= 2){
+            return;
+        }
+        // 保存一份 left 副本
+        int copyLeft = left;
+        // 保存一份 right 副本
+        int copyRight = right;
+        int cur = left + 1;
+        int target = arr[cur];
+        while (cur < right){
+            if (arr[cur] > target){
+                swap(arr,cur,--right);
+            }
+            else if (arr[cur] < target){
+                swap(arr,cur++,++left);
+            }
+            else {
+                cur ++;
+            }
+        }
+        quickSort(arr,copyLeft,left+1);
+        quickSort(arr,right - 1,copyRight);
+    }
+
     private void swap(int[] arr,int a,int b){
         int temp = arr[a];
         arr[a] = arr[b];
@@ -121,5 +154,25 @@ public class Partition {
             System.out.println(Arrays.toString(resB));
         }
         return equals;
+    }
+
+    @Test
+    public void quickSortTest(){
+        for (int i = 0; i < 10000; i++) {
+            if (!detector()){
+                System.out.println("快排 失败了~~~");
+            }
+        }
+        System.out.println("快排成功~~");
+    }
+
+    // 对数器
+    private boolean detector(){
+        int[] ints = ArrayUtil.generatorArray();
+        int[] ans = new int[ints.length];
+        System.arraycopy(ints,0,ans,0,ints.length);
+        quickSort(ints);
+        Arrays.sort(ans);
+        return ArrayUtil.isEquals(ints, ans);
     }
 }
