@@ -23,8 +23,10 @@ public class HeapSort {
         }
     }
 
+    // 堆化
     private void heapify(int[] arr){
         for (int i = arr.length - 1; i >= 0; i--) {
+            // 从数组最后一个位置开始，依次执行siftdown下沉操作
             siftDown(arr,i,arr.length);
         }
     }
