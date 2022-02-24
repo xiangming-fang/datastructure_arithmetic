@@ -1,45 +1,23 @@
 package indi.xm.jy.bit;
 
-import org.junit.Test;
-
-/**
- * @ProjectName: datastructure_arithmetic
- * @Package: indi.xm.jy.bit
- * @ClassName: Move
- * @Author: albert.fang
- * @Description: 移位
- * @Date: 2021/12/6 18:33
- */
 public class BitOperator {
 
-    @Test
-    public void andTest(){
-        System.out.println(1 & 0);
-    }
+    public static void main(String[] args) {
+        // 0111 1111 1111 1111 1111 1111 1111 1111
+        // 左移一位，舍弃左边一位，右边补0
+        // 1111 1111 1111 1111 1111 1111 1111 1110
+        // 得到一个负数，负数转成原码读取，-1
+        // 1111 1111 1111 1111 1111 1111 1111 1101
+        // 再取反，负数取反的时候，符号位是不取反的
+        // 1000 0000 0000 0000 0000 0000 0000 0010
+        // 所以最后得到的答案是-2.
+        System.out.println(Integer.MAX_VALUE << 1);
 
-    @Test
-    public void orTest(){
-        System.out.println(1 | 0);
-    }
+        System.out.println(Integer.MAX_VALUE + 1);
+        System.out.println(Integer.MAX_VALUE + 1 - 1);
 
-    @Test
-    public void notTest(){
-        System.out.println(~110);
-    }
+        System.out.println(Integer.MAX_VALUE + 1 == Integer.MIN_VALUE);
 
-    @Test
-    public void xorTest(){
-        System.out.println( 1 ^ 0 );
-    }
-
-    @Test
-    public void moveTest(){
-        // 负数左移，符号位不动，保持为1，右边补0
-        System.out.println(-1 << 2);
-        // 正数左移，符号位不动，保持为0，右边补0
-        System.out.println(1 << 2);
-        // 正数右移，右边移除丢弃
-        System.out.println(1 >> 2);
-        System.out.println(1 >>> 2);
+        System.out.println(Integer.MIN_VALUE << 1);
     }
 }
