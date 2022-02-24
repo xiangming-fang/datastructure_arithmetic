@@ -17,6 +17,21 @@ import java.util.Random;
 public class ArrayTest {
 
     @Test
+    public void listTest(){
+        Array<Integer> ans = new Array<>(16);
+        int pre = System.identityHashCode(ans);
+        int count = 0;
+        while (true){
+            ans.addLast(1);
+            count ++;
+            if (System.identityHashCode(ans) != pre){
+                System.out.println("扩容前后的内存地址不一样了：" + count);
+                break;
+            }
+        }
+    }
+
+    @Test
     public void addRemoveIndexTest(){
         Array<String> array = new Array<>(1);
         array.add(0,"sdfasf");
