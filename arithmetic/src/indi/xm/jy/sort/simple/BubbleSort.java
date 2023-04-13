@@ -22,7 +22,9 @@ public class BubbleSort {
         int len = arr.length;
         for (int i = 0; i < len; i++) {
             // 注意边界条件 len - i - 1
+            // 每趟确认一个该趟最大值
             for (int j = 0; j < len - i - 1; j++) {
+                // 前面一个比后面的大，交换
                 if (arr[j] > arr[j + 1]){
                     arr[j] = arr[j] ^ arr[j+1];
                     arr[j + 1] = arr[j] ^ arr[j+1];
